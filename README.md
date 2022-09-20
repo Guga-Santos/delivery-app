@@ -70,8 +70,8 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta 
   </summary><br>
   
   - Este projeto é em grupo;
-  - Serão `X` dias de projeto;
-  - Data de entrega para avaliação final do projeto: `DD/MM/YYYY - 14:00h`.
+  - Serão `11` dias de projeto;
+  - Data de entrega para avaliação final do projeto: `11/10/2022 13:50`.
 
 </details>
 
@@ -84,9 +84,9 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta 
 
   1. Clone o repositório
 
-  - Use o comando: `git clone git@github.com:tryber/sd-0x-project-delivery-app.git`.
+  - Use o comando: `git clone git@github.com:tryber/sd-019-b-project-delivery-app.git`.
   - Entre na pasta do repositório que você acabou de clonar:
-    - `cd sd-0x-project-delivery-app`
+    - `cd sd-019-b-project-delivery-app`
   - Vá para a branch do seu grupo, com `git checkout main-group-XX && git pull`, onde `XX` é o número do seu grupo. Exemplos: `main-group-1`, `main-group-22`.
 
   2. Instale as dependências
@@ -122,7 +122,7 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta 
 
   6. Crie um novo `Pull Request` _(PR)_
 
-  - Vá até a página de _Pull Requests_ do [repositório no GitHub](https://github.com/tryber/sd-0x-project-delivery-app/pulls)
+  - Vá até a página de _Pull Requests_ do [repositório no GitHub](https://github.com/tryber/sd-019-b-project-delivery-app/pulls)
   - Clique no botão verde _"New pull request"_
   - Clique na caixa de seleção _"Compare"_ e escolha a branch do grupo, `main-group-XX`, e a sua branch **com atenção**
   - Coloque um título para a sua _Pull Request_
@@ -130,7 +130,7 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta 
   - Clique no botão verde _"Create pull request"_
   - Adicione uma descrição para o _Pull Request_ e clique no botão verde _"Create pull request"_
   - **Não se preocupe em preencher mais nada por enquanto!**
-  - Volte até a [página de _Pull Requests_ do repositório](https://github.com/tryber/sd-0x-project-delivery-app/pulls) e confira que o seu _Pull Request_ está criado
+  - Volte até a [página de _Pull Requests_ do repositório](https://github.com/tryber/sd-019-b-project-delivery-app/pulls) e confira que o seu _Pull Request_ está criado
 
   7. Assim que aprovado por pelo menos duas pessoas do seu grupo e com o _Linter_ adereçado, acesse **SEU** _Pull Request_ e clique no botão _"Merge pull request"_
 
@@ -167,7 +167,7 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta 
 
     - No menu à direita, clique no _link_ **"Assignees"** e escolha **o seu usuário**;
 
-    - No menu à direita, clique no _link_ **"Reviewers"** e digite `students`, selecione o time `tryber/students-sd-0x`.
+    - No menu à direita, clique no _link_ **"Reviewers"** e digite `students`, selecione o time `tryber/students-sd-019-b`.
 
   Caso tenha alguma dúvida, [aqui tem um video explicativo](https://vimeo.com/362189205).
 
@@ -231,8 +231,8 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta 
   Para fazer a análise estática do seu código neste projeto, vamos utilizar o linter [ESLint](https://eslint.org/). Assim o código estará alinhado com as boas práticas de desenvolvimento, sendo mais legível e de fácil manutenção!
 
   ➡️ Este projeto já vem com as dependências relacionadas ao _linter_ configuradas nos arquivos `package.json` nos seguintes caminhos:
-    - `sd-0x-project-delivery-app/back-end/package.json`
-    - `sd-0x-project-delivery-app/front-end/package.json`
+    - `sd-019-b-project-delivery-app/back-end/package.json`
+    - `sd-019-b-project-delivery-app/front-end/package.json`
     
   ➡️ Para poder rodar o `ESLint` basta:
 
