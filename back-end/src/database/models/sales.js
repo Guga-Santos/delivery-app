@@ -25,9 +25,9 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true,
       primaryKey: true
     },
-    user_id: DataTypes.NUMBER,
-    seller_id: DataTypes.NUMBER,
-    total_price: DataTypes.NUMBER,
+    user_id: DataTypes.INTEGER,
+    seller_id: DataTypes.INTEGER,
+    total_price: DataTypes.DECIMAL,
     delivery_address: DataTypes.STRING,
     delivery_number: DataTypes.STRING,
     sale_date: DataTypes.DATE

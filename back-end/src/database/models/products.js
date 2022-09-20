@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       unique: true,
   },
-    price: DataTypes.INTEGER,
+    price: DataTypes.DECIMAL(4,2),
     url_image: DataTypes.STRING
   }, {
     sequelize,
