@@ -1,0 +1,356 @@
+{
+  "requirements": [
+    {
+      "bonus": false,
+      "description": "1 - Crie uma tela de login que deve ser acessível pelos endpoints / e /login no navegador",
+      "enabled": true,
+      "identifier": null,
+      "order": 1,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "2 - Crie os elementos da tela de login com os data-testids disponíveis no protótipo",
+      "enabled": true,
+      "identifier": null,
+      "order": 2,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "3 - Desenvolva a tela de login de maneira que ela impossibilite o login com dados mal-formatados",
+      "enabled": true,
+      "identifier": null,
+      "order": 3,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "4 - Desenvolva a tela de login de maneira que ela impossibilite o login com dados válidos, porém inexistentes no banco de dados",
+      "enabled": true,
+      "identifier": null,
+      "order": 4,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "5 - Desenvolva a tela de login de maneira que ela possibilite fazer o login com dados válidos e existentes no banco de dados",
+      "enabled": true,
+      "identifier": null,
+      "order": 5,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "6 - Crie uma tela de registro que deve ser acessível via endpoint /register no navegador e pelo botão de registro na tela de login",
+      "enabled": true,
+      "identifier": null,
+      "order": 6,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "7 - Crie os elementos da tela de registro com os data-testids disponíveis no protótipo",
+      "enabled": true,
+      "identifier": null,
+      "order": 7,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "8 - Desenvolva a tela de registro de maneira que ela impossibilite o cadastro com dados mal-formatados",
+      "enabled": true,
+      "identifier": null,
+      "order": 8,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "9 - Desenvolva a tela de registro de maneira que ela possibilite cadastrar com dados válidos",
+      "enabled": true,
+      "identifier": null,
+      "order": 9,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "10 - Desenvolva a tela de registro de maneira que ela impossibilite o cadastro de um usuário já existente",
+      "enabled": true,
+      "identifier": null,
+      "order": 10,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "11 - Crie uma tela de produtos do cliente contendo uma barra de navegação - navbar - que servirá também para demais telas das pessoas usuárias",
+      "enabled": true,
+      "identifier": null,
+      "order": 11,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "12 - Desenvolva a tela de produtos do cliente criando os demais elementos com os data-testids disponíveis no protótipo",
+      "enabled": true,
+      "identifier": null,
+      "order": 12,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "13 - Desenvolva a tela de produtos do cliente de forma que ela pressuponha dados válidos da pessoa usuária armazenados no localStorage",
+      "enabled": true,
+      "identifier": null,
+      "order": 13,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "14 - Desenvolva a tela de produtos do cliente de forma que os cards de todos os produtos pré-cadastrados contenham os valores corretos",
+      "enabled": true,
+      "identifier": null,
+      "order": 14,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "15 - Desenvolva a tela de produtos do cliente de forma que o preço total esteja correto após a adição de itens aleatórios",
+      "enabled": true,
+      "identifier": null,
+      "order": 15,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "16 - Desenvolva a tela de produtos do cliente de forma que haja um botão de carrinho que redirecionará para a tela de checkout caso itens sejam adicionados",
+      "enabled": true,
+      "identifier": null,
+      "order": 16,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "17 - Crie uma tela de checkout do cliente com elementos com os data-testids disponíveis no protótipo",
+      "enabled": true,
+      "identifier": null,
+      "order": 17,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "18 - Desenvolva a tela de checkout do cliente de forma a possuir os dados corretos do carrinho e preço total",
+      "enabled": true,
+      "identifier": null,
+      "order": 18,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "19 - Desenvolva a tela de checkout do cliente de forma que seja possível remover itens do carrinho",
+      "enabled": true,
+      "identifier": null,
+      "order": 19,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "20 - Desenvolva a tela de checkout do cliente de forma a nos redirecionar para a tela de detalhes do pedido feito após a finalização do mesmo",
+      "enabled": true,
+      "identifier": null,
+      "order": 20,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "21 - Desenvolva a tela de checkout do cliente de forma a gerar uma nova venda na tabela sales, assim como relações em salesProducts ao finalizar o pedido",
+      "enabled": true,
+      "identifier": null,
+      "order": 21,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "22 - Crie uma tela de pedidos do cliente com elementos a partir dos data-testids disponíveis no protótipo",
+      "enabled": true,
+      "identifier": null,
+      "order": 22,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "23 - Desenvolva a tela de pedidos do cliente de forma a conter a lista de pedidos do mesmo com os dados corretos",
+      "enabled": true,
+      "identifier": null,
+      "order": 23,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "24 - Desenvolva a tela de pedidos do cliente de forma a dar acesso à tela de detalhes de um pedido ao clicar no card do mesmo",
+      "enabled": true,
+      "identifier": null,
+      "order": 24,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "25 - Crie uma tela de detalhes do pedido do cliente com elementos a partir dos data-testids disponíveis no protótipo",
+      "enabled": true,
+      "identifier": null,
+      "order": 25,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "26 - Desenvolva a tela de detalhes do pedido do cliente de forma a possuir os dados corretos da venda",
+      "enabled": true,
+      "identifier": null,
+      "order": 26,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "27 - Crie uma tela de pedidos da pessoa vendedora com elementos a partir dos data-testids disponíveis no protótipo",
+      "enabled": true,
+      "identifier": null,
+      "order": 27,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "28 - Desenvolva a tela de pedidos da pessoa vendedora de forma a conter a lista de pedidos do mesmo com os dados corretos",
+      "enabled": true,
+      "identifier": null,
+      "order": 28,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "29 - Desenvolva a tela de pedidos da pessoa vendedora de forma a dar acesso à tela de detalhes de um pedido ao clicar no card do mesmo",
+      "enabled": true,
+      "identifier": null,
+      "order": 29,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "30 - Crie uma tela de detalhes do pedido da pessoa vendedora com elementos a partir dos data-testids disponíveis no protótipo",
+      "enabled": true,
+      "identifier": null,
+      "order": 30,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "31 - Desenvolva a tela de detalhes do pedido da pessoa vendedora de forma a possuir os dados corretos da venda",
+      "enabled": true,
+      "identifier": null,
+      "order": 31,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "32 - Desenvolva a tela de detalhes do pedido da pessoa vendedora de forma a ser capaz de alterar o status do pedido",
+      "enabled": true,
+      "identifier": null,
+      "order": 32,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "33 - Garanta que o status do pedido atualizado na tela de detalhes do pedido da pessoa vendedora seja refletido na tela de detalhes do pedido do cliente após atualização das páginas",
+      "enabled": true,
+      "identifier": null,
+      "order": 33,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "34 - Garanta que o status do pedido atualizado na tela de detalhes do pedido da pessoa vendedora seja refletido na tela de lista de pedidos do cliente após atualização das páginas",
+      "enabled": true,
+      "identifier": null,
+      "order": 34,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "35 - Garanta que o status do pedido atualizado na tela de detalhes do pedido do cliente seja refletido na tela de lista de pedidos da pessoa vendedora após atualização das páginas",
+      "enabled": true,
+      "identifier": null,
+      "order": 35,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "36 - Crie uma tela de pessoa administradora com elementos a partir dos data-testids disponíveis no protótipo",
+      "enabled": true,
+      "identifier": null,
+      "order": 36,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "37 - Desenvolva a tela da pessoa administradora de forma a validar o formulário de cadastro",
+      "enabled": true,
+      "identifier": null,
+      "order": 37,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "38 - Desenvolva a tela da pessoa administradora de forma que seja possível cadastrar pessoas usuárias válidas",
+      "enabled": true,
+      "identifier": null,
+      "order": 38,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "39 - Desenvolva a tela da pessoa administradora de forma que ela impossibilite o cadastro de pessoas usuárias já existentes",
+      "enabled": true,
+      "identifier": null,
+      "order": 39,
+      "skill_ids": []
+    },
+    {
+      "bonus": true,
+      "description": "40 - Desenvolva a tela da pessoa administradora de forma que haja uma tabela de pessoas usuárias cadastradas",
+      "enabled": true,
+      "identifier": null,
+      "order": 40,
+      "skill_ids": []
+    },
+    {
+      "bonus": true,
+      "description": "41 - Desenvolva a tela da pessoa administradora de forma que seja possível deletar pessoas usuárias na tabela",
+      "enabled": true,
+      "identifier": null,
+      "order": 41,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "42 - Crie testes que cubram no mínimo 30 por cento dos arquivos do front-end e back-end em src com um mínimo de 75 linhas cobertas em cada",
+      "enabled": true,
+      "identifier": null,
+      "order": 42,
+      "skill_ids": []
+    },
+    {
+      "bonus": true,
+      "description": "43 - Crie testes que cubram no mínimo 60 por cento dos arquivos do front-end e back-end em src com um mínimo de 150 linhas cobertas em cada",
+      "enabled": true,
+      "identifier": null,
+      "order": 43,
+      "skill_ids": []
+    },
+    {
+      "bonus": true,
+      "description": "44 - Crie testes que cubram no mínimo 90 por cento dos arquivos do front-end e back-end em src com um mínimo de 225 linhas cobertas em cada",
+      "enabled": true,
+      "identifier": null,
+      "order": 44,
+      "skill_ids": []
+    }
+  ]
+}

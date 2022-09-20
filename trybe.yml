@@ -1,0 +1,16 @@
+ignore_files:
+  - __tests__/
+  - back-end/.eslintignore
+  - back-end/.eslintrc.json
+  - front-end/.eslintignore
+  - front-end/.eslintrc.json
+  - front-end/.stylelintignore
+  - front-end/.stylelintrc.json
+  - scripts/
+  - .editorconfig
+  - data-testids.txt
+  - db.example.sql
+  - jest-puppeteer.config.js
+  - jest.config.js
+  - pm2.dev.config.yml
+  - pm2.test.config.yml
