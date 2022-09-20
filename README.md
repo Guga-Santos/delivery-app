@@ -71,7 +71,7 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta 
   
   - Este projeto é em grupo;
   - Serão `11` dias de projeto;
-  - Data de entrega para avaliação final do projeto: `11/10/2022 13:50`.
+  - Data de entrega para avaliação final do projeto: `11/10/2022 14:00`.
 
 </details>
 
