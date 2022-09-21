@@ -10,7 +10,7 @@ export default function LoginForm() {
 
   useEffect(() => {
     if (email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)
-    && password.length > passwordMin) {
+    && password.length >= passwordMin) {
       setDisabled(false);
     } else {
       setDisabled(true);
