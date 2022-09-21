@@ -1,54 +1,17 @@
-.App {
-  align-items: center;
-  background: #0fa36b;
-  color: #464646;
+* {
+  padding: 0;
+  margin: 0;
+}
+
+
+.login-container {
   display: flex;
   flex-direction: column;
-  font-family: sans-serif;
-  height: 100vh;
   justify-content: center;
-  width: 100%;
+  align-items: center;
 }
 
-.App > .logo {
-  animation: shake 1.5s infinite ease;
-  color: aliceblue;
-  font-family: Montserrat , sans-serif;
-  font-size: 3em;
-  font-weight: 900;
-}
-
-.rocksGlass {
-  animation: shake 1s infinite ease;
-  max-height: 80vh;
-}
-
-@keyframes shake {
-
-  0% {
-    transform: rotate(5deg);
-  }
-
-  50% {
-    transform: rotate(-5deg);
-  }
-
-  100% {
-    transform: rotate(5deg);
-  }
-}
-
-@keyframes clink {
-
-  0% {
-    transform: rotate(-10deg);
-  }
-
-  50% {
-    transform: rotate(20deg);
-  }
-
-  100% {
-    transform: rotate(-10deg);
-  }
+.login-buttons {
+  height: 4vh;
+  width: 18vw;
 }
