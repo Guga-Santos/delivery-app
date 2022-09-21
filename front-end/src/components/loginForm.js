@@ -42,6 +42,7 @@ export default function LoginForm() {
       <button
         className="login-buttons"
         type="button"
+        disabled={ disabled }
         data-testid="common_login__button-login"
       >
         Login
@@ -49,7 +50,6 @@ export default function LoginForm() {
       <button
         className="login-buttons"
         type="button"
-        disabled={ disabled }
         data-testid="common_login__button-register"
       >
         Ainda não tenho conta
