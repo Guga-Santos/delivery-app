@@ -4,12 +4,15 @@ const UserService = {
   getAll: async () => {
     const users = await Model.users.findAll({
       attributes: {
-          exclude: ['password']
-      }
+          exclude: ['password'],
+      },
   });
     
     return users;
   },
+  // create: async (body) => {
+
+  // }
 };
 
 module.exports = UserService;
