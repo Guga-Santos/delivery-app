@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import '../App.css';
+import { useNavigate } from 'react-router-dom';
 import { loginRequest } from '../service/api';
 
 export default function LoginForm() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [disabled, setDisabled] = useState(true);
@@ -64,6 +66,7 @@ export default function LoginForm() {
         className="login-buttons"
         type="button"
         data-testid="common_login__button-register"
+        onClick={ () => navigate('/register') }
       >
         Ainda não tenho conta
       </button>
