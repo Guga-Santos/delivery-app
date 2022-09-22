@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class users extends Model {
+  class User extends Model {
     name;
     email;
     password;
@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
         { foreignKey: 'id', as: 'seller' });
     }
   }
-  users.init({
+  User.init({
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
@@ -33,5 +33,5 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: false,
     underscored: true,
   });
-  return users;
+  return User;
 };
