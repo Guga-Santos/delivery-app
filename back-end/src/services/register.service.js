@@ -3,10 +3,10 @@ const Model = require('../database/models');
 
 const RegisterService = {
   create: async (body) => {
-    const { name, email, pass } = body;
-    const password = md5(pass);
+    const { name, email, password } = body;
+    const hash = md5(password);
 
-    const result = await Model.users.create({ name, email, password, role: 'customer' });
+    const result = await Model.users.create({ name, email, password: hash, role: 'customer' });
 
     if (!result) return null;
 
