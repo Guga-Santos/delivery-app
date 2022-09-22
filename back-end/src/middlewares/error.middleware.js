@@ -1,4 +1,3 @@
-
 const ErrorMiddleware = (err, _req, res, _next) => {
   const { message, code } = err;
 

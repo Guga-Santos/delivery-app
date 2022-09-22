@@ -1,14 +1,14 @@
-import LoginService from "../services/login.service";
+const LoginService = require("../services/login.service");
 
-export default class LoginController {
-  static async login(req, res) {
-    const {email, password } = req.body;
+module.exports = class LoginController {
+  async login(req, res) {
+    const { email, password } = req.body;
 
     if(!password || !email) {
-      throw new ErrorCode('All fields are required', 401);
+      throw new ErrorCodes('All fields are required', 401);
     }
 
-    const user = await LoginService.getOne(e);
+    const user = await LoginService.getOne(req.body.email);
 
     if(!user) return res.status(404).json({message: 'User not found!'})
     

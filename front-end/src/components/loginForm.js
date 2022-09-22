@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import '../App.css';
+import { loginRequest } from '../service/api';
 
 export default function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [disabled, setDisabled] = useState(true);
+  const [notFound, setNotFound] = useState(false);
 
   const passwordMin = 6;
 
@@ -16,6 +18,11 @@ export default function LoginForm() {
       setDisabled(true);
     }
   }, [email, password]);
+
+  const handleLoginClick = async () => {
+    const test = await loginRequest('/login', { email, password });
+    console.log(test);
+  };
 
   return (
     <div className="login-container">
@@ -44,6 +51,7 @@ export default function LoginForm() {
         type="button"
         disabled={ disabled }
         data-testid="common_login__button-login"
+        onClick={ handleLoginClick }
       >
         Login
       </button>

@@ -1,10 +1,10 @@
-import { Router } from 'express';
-import LoginController from '../controllers/login.controller';
+const { Router } = require('express');
+const LoginController = require('../controllers/login.controller');
 
 
 const login = Router();
 
 login
-.get('/login', LoginController.login);
+.post('/login', LoginController.login);
 
-export default login;
+module.exports = login;
