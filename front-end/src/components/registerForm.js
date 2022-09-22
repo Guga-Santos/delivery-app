@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { registerRequest } from '../service/api';
 
 export default function RegisterForm() {
+  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -19,6 +22,15 @@ export default function RegisterForm() {
       setDisabled(true);
     }
   }, [name, email, password]);
+
+  const handleRegisterClick = async () => {
+    try {
+      await registerRequest('/register', { name, email, password });
+      navigate('/customer/products');
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="register-container">
@@ -57,6 +69,7 @@ export default function RegisterForm() {
         type="button"
         disabled={ disabled }
         data-testid="common_register__button-register"
+        onClick={ handleRegisterClick }
       >
         CADASTRAR
       </button>
