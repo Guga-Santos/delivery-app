@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class products extends Model {
+  class Products extends Model {
     name;
     price;
     url_image;
@@ -12,8 +12,9 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.sales_products, { foreignKey: 'id', as: 'product_id' });
     }
     }
-  }
-  products.init({
+  
+  
+  Products.init({
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
@@ -31,5 +32,5 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: false,
     underscored: true,
   });
-  return products;
+  return Products;
 };

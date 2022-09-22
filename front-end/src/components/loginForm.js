@@ -20,8 +20,13 @@ export default function LoginForm() {
   }, [email, password]);
 
   const handleLoginClick = async () => {
-    const test = await loginRequest('/login', { email, password });
-    console.log(test);
+    try {
+      const test = await loginRequest('/login', { email, password });
+      console.log(test);
+    } catch (error) {
+      console.log(error);
+      setNotFound(true);
+    }
   };
 
   return (
@@ -62,6 +67,14 @@ export default function LoginForm() {
       >
         Ainda não tenho conta
       </button>
+      { notFound
+        && (
+          <span
+            data-testid="common_login__element-invalid-email"
+          >
+            Algo errado não está certo.
+          </span>
+        )}
     </div>
   );
 }
