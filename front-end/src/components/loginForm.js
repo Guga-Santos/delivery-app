@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
 import '../App.css';
-import { useNavigate } from 'react-router-dom';
 import { loginRequest } from '../service/api';
 
 export default function LoginForm() {
@@ -9,6 +9,8 @@ export default function LoginForm() {
   const [password, setPassword] = useState('');
   const [disabled, setDisabled] = useState(true);
   const [notFound, setNotFound] = useState(false);
+  const [signIn, setSignIn] = useState(false);
+  const [role, setRole] = useState('');
 
   const passwordMin = 6;
 
@@ -23,8 +25,10 @@ export default function LoginForm() {
 
   const handleLoginClick = async () => {
     try {
-      const test = await loginRequest('/login', { email, password });
-      console.log(test);
+      const { user } = await loginRequest('/login', { email, password });
+      console.log(user.role);
+      setRole(user.role);
+      setSignIn(true);
     } catch (error) {
       console.log(error);
       setNotFound(true);
@@ -33,6 +37,7 @@ export default function LoginForm() {
 
   return (
     <div className="login-container">
+      { signIn && <Navigate to={ `/${role}/products` } /> }
       <label htmlFor="email-input">
         <input
           type="email"
