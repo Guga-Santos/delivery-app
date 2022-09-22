@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import '../App.css';
-import { useNavigate } from 'react-router-dom';
 import { loginRequest } from '../service/api';
 
 export default function LoginForm() {
