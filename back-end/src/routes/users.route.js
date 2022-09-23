@@ -5,6 +5,6 @@ const users = Router();
 
 users
 .get('/users', UsersController.getAll)
-.post('/users', UsersController.createUser);
+.post('/users', UsersController.validateBody, UsersController.createUser);
 
 module.exports = users;
