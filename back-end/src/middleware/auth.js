@@ -1,19 +1,18 @@
 const jwt = require('jsonwebtoken');
+const fs = require('fs');
 
-const secret = 'secret_key';
+require('dotenv').config();
 
-const Auth = {
-  validateAdmin: async (req, res, next) => {
-    const { authorization } = req.headers;
-    if (!authorization) {
-      return res.status(401).json({ message: 'Unauthorized Access' });
-    }
-    const { role } = jwt.verify(authorization, secret);
-    if (!role || role !== 'administrator') {
-      return res.status(401).json({ message: 'Unauthorized Access' });
-    }
-    next();
-  },
-};
+const jwtConfig = { expiresIn: '60m', algorithm: 'HS256' };
 
-module.exports = Auth;
+const secret = fs.readFileSync('jwt.evaluation.key').toString().trim();
+
+const generateToken = (payload) => jwt.sign(payload, secret, jwtConfig);
+
+const verifyToken = (token) => jwt.verify(token, secret);
+
+
+module.exports = {
+  generateToken,
+  verifyToken,
+}

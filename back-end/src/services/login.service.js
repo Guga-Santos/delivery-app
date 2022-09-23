@@ -1,5 +1,6 @@
 const md5 = require('md5');
 const Model = require('../database/models');
+const Auth = require('../middleware/auth');
 
 const LoginService = {
   getOne: async (body) => {
@@ -11,8 +12,10 @@ const LoginService = {
     const decrypt = md5(pass);
 
     if (password !== decrypt) return null;
+
+    const token = Auth.generateToken(data);
     
-    return data;
+    return {...data, token };
   },
 };
 
