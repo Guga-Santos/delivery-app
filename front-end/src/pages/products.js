@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-// import { Link } from 'react-router-dom';
 import NavBar from '../components/navBar';
 import ProductCard from '../components/productCard';
 
@@ -79,7 +78,6 @@ export default function Products() {
     <div>
       <NavBar>produtos</NavBar>
       <main>
-        <h1>{console.log(quantity)}</h1>
         {
           result.map(({ id, name, price, urlImage }, index) => (
             <ProductCard
