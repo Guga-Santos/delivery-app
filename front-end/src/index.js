@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import NewUserProvider from './context/newUserProvider';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <NewUserProvider>
+      <App />
+    </NewUserProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );

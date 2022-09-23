@@ -1,6 +1,8 @@
 * {
   padding: 0;
   margin: 0;
+
+  font-family: sans-serif;
 }
 
 
@@ -14,4 +16,64 @@
 .login-buttons {
   height: 4vh;
   width: 18vw;
+}
+
+/* ------------------Admin Header----------------------- */
+
+.nav-container {
+  background: #036B52;
+  height: 10vh;
+  width: 100vw;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-size: 2.8vh;
+  overflow-y: hidden;
+}
+
+/* -----------------------NewForm-------------------------- */
+
+.newform-container {
+  width: 90vw;
+  margin: 5vh auto;
+}
+
+.inputs-container {
+  display: flex;
+  position: relative;
+  margin-top: 2vh;
+}
+
+.inputs-container label {
+  display: flex;
+  flex-direction: column;
+
+  width: 16vw;
+  margin-right: 3vw;
+}
+
+#register-button {
+  width: 15vw;
+  height: 4vh;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+/* ---------------------User List-------------------------------*/
+
+.userlist-container {
+  width: 90vw;
+  margin: 5vh auto;
+}
+
+.userlist-container table {
+  width: 100%;
+}
+
+td, th {
+  width: 20%;
+  text-align: left;
 }
