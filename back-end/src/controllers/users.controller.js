@@ -5,6 +5,17 @@ const UsersController = {
     const users = await UserService.getAll();    
     res.status(200).json(users);
   },
+  createUser: async (req, res) => {
+    const { name, email, password, role } = req.body;
+    if(!name || !email || !password || !role) {
+      return res.status(402).json({ message: "All fields are required"})
+    }
+    const newUser = await UserService.create(req.body);
+    if (!newUser) {
+      return res.status(401).json({ message: 'User already exist' });
+    }
+    res.status(201).json({ message: 'created' });
+  },
 };
 
 module.exports = UsersController;

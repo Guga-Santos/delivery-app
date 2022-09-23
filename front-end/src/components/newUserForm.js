@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import NewUserContext from '../context/newUserContext';
+import { createUserRequest } from '../service/api';
 
 const MIN_NAME_LENGTH = 12;
 const MIN_PASS_LENGTH = 6;
@@ -10,7 +11,8 @@ export default function NewUserForm() {
   const [disable, setDisable] = useState(true);
 
   const {
-    setNewUser,
+    refresh,
+    setRefresh,
     newUserName,
     setNewUserName,
     newUserEmail,
@@ -34,13 +36,14 @@ export default function NewUserForm() {
     }
   }, [newUserName, newUserPassword, newUserEmail, newUserRole]);
 
-  const handleClick = () => {
-    setNewUser({
+  const handleClick = async () => {
+    await createUserRequest('/users', {
       name: newUserName,
       email: newUserEmail,
       password: newUserPassword,
       role: newUserRole,
     });
+    setRefresh(!refresh);
   };
 
   return (

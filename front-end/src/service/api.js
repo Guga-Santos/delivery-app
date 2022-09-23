@@ -14,4 +14,9 @@ export const usersRequest = async (endpoint) => {
   return data;
 };
 
+export const createUserRequest = async (endpoint, body) => {
+  const { data } = await api.post(endpoint, body);
+  return data;
+};
+
 export default api;

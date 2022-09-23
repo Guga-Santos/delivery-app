@@ -24,8 +24,8 @@ export default function LoginForm() {
   }, [email, password]);
 
   useEffect(() => {
-    if (role === 'costumer') {
-      setRole('/costumer/products');
+    if (role === 'customer') {
+      setRole('/customer/products');
       setSignIn(true);
     }
     if (role === 'seller') {

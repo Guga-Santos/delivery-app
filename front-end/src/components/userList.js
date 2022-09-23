@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import NewUserContext from '../context/newUserContext';
 import { usersRequest } from '../service/api';
 
 export default function UsersList() {
+  const context = useContext(NewUserContext);
+  const { refresh } = context;
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -10,7 +13,7 @@ export default function UsersList() {
       setUsers(allUsers.data);
     };
     getUsers();
-  }, []);
+  }, [refresh]);
 
   return (
     <div className="userlist-container">
