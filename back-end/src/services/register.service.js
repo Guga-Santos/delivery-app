@@ -6,13 +6,13 @@ const RegisterService = {
     const { name, email, password } = body;
     const hash = md5(password);
 
-    const result = await Model.users.create({ name, email, password: hash, role: 'customer' });
+    const nameExists = await Model.users.findOne({ where: { name }, raw: true });
+    const emailExists = await Model.users.findOne({ where: { email }, raw: true });
 
-    if (!result) return null;
+    if (nameExists || emailExists) return null;
 
-    const code = 201;
-    
-    return code;
+    const newCustomer = await Model.users.create({ name, email, password: hash, role: 'customer' });
+    return newCustomer;
   },
 };
 

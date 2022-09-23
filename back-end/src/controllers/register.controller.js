@@ -2,11 +2,11 @@ const RegisterService = require('../services/register.service');
 
 const RegisterController = {
   create: async (req, res) => {
-    const code = await RegisterService.create(req.body);
+    const newCustomer = await RegisterService.create(req.body);
 
-    if (!code) return res.status(500).json({ message: 'Internal error!' });
+    if (!newCustomer) return res.status(409).json({ message: 'Customer already exist' });
 
-    res.status(code).end();
+    res.status(201).json({ message: 'created' });
   },
 };
 

@@ -8,6 +8,7 @@ export default function RegisterForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [disabled, setDisabled] = useState(true);
+  const [notFound, setNotFound] = useState(false);
 
   const nameMin = 12;
   const passwordMin = 6;
@@ -29,6 +30,7 @@ export default function RegisterForm() {
       navigate('/customer/products');
     } catch (error) {
       console.log(error);
+      setNotFound(true);
     }
   };
 
@@ -73,6 +75,14 @@ export default function RegisterForm() {
       >
         CADASTRAR
       </button>
+      { notFound
+        && (
+          <span
+            data-testid="common_register__element-invalid_register"
+          >
+            Seu nome ou email já existem.
+          </span>
+        )}
     </div>
   );
 }
