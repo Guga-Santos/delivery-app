@@ -8,7 +8,7 @@ export default function Products() {
 
   const [quantity, setQuantity] = useState(0);
   const result = [
-    { id: 1,	name:"Skol Lata 250ml",	price:2.20,	url_image:"http://localhost:3000/images/skol_lata_350ml.jpg"},
+    {id: 1,	name:"Skol Lata 250ml",	price:2.20,	url_image:"http://localhost:3000/images/skol_lata_350ml.jpg"},
     {id: 2,	name: "Heineken 600ml",	price:7.50,	url_image:"http://localhost:3000/images/heineken_600ml.jpg"},
     {id: 3,	name: "Antarctica Pilsen 300ml",	price:2.49,	url_image:"http://localhost:3000/images/antarctica_pilsen_300ml.jpg"},
     {id: 4,	name: "Brahma 600ml",	price:7.50,	url_image:"http://localhost:3000/images/brahma_600ml.jpg"},
@@ -31,8 +31,8 @@ export default function Products() {
       <main>
         <h1>{console.log(quantity)}</h1>
       {
-      result.map(({id, name, price, url_image}) => (
-        <ProductCard key={id} id={id} name={name} price={price} url_image={url_image}/>
+      result.map(({id, name, price, url_image}, index) => (
+        <ProductCard key={id} id={index +1} name={name} price={price} url_image={url_image}/>
       ))}
       </main>
     </div>
