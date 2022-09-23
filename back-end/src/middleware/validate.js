@@ -1,4 +1,7 @@
 const jwt = require('jsonwebtoken');
+const fs = require('fs');
+
+const secret = fs.readFileSync('jwt.evaluation.key', { encoding: 'utf-8' });
 
 const Auth = {
   validateAdmin: async (req, res, next) => {

@@ -15,7 +15,7 @@ const LoginService = {
 
     const token = Auth.generateToken(data);
     
-    return {...data, token };
+    return { ...data, token };
   },
 };
 
