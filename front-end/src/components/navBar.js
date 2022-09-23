@@ -12,39 +12,39 @@ export default function NavBar() {
             <Link
               to="produtos"
               data-testid="customer_products__element-navbar-link-products"
-              >
-                PRODUTOS
+            >
+              PRODUTOS
             </Link>
           </li>
-          <li >
+          <li>
             <Link
-              to="pedidos" 
+              to="pedidos"
               data-testid="customer_products__element-navbar-link-orders"
-              >
-                MEUS PEDIDOS
+            >
+              MEUS PEDIDOS
             </Link>
           </li>
         </div>
         <div className="rigth">
-          <li >
+          <li>
             <Link
               to="/"
               data-testid="customer_products__element-navbar-user-full-name"
-              >
-                (NOME DO USUARIO LOGADO)
+            >
+              (NOME DO USUARIO LOGADO)
             </Link>
           </li>
-          <li >
+          <li>
             <Link
               to="logout"
               data-testid="customer_products__element-navbar-link-logout"
-              >
-                Sair
-              </Link>
+            >
+              Sair
+            </Link>
           </li>
         </div>
       </ul>
-        navbar
+      navbar
     </div>
   );
 }
