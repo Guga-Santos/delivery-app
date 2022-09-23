@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 
 export default function ProductCard({ key, id, name, price, urlImage }) {
   const [quantity, setQuantity] = useState(0);
@@ -7,14 +7,14 @@ export default function ProductCard({ key, id, name, price, urlImage }) {
     <div
       key={ key }
       className="card"
+      style={ {
+        display: 'flex',
+        flexDirection: 'column',
+        margin: '2vh 4vw',
+      } }
     >
-      <span
-        className="product-price"
-        data-testid={ `customer_products__element-card-price-${id}` }
-      >
-        { price }
-      </span>
       <img
+        style={ { height: '30vh' } }
         className="product-img"
         alt={ name }
         data-testid={ `customer_products__img-card-bg-image-${id}` }
@@ -25,6 +25,12 @@ export default function ProductCard({ key, id, name, price, urlImage }) {
         data-testid={ `customer_products__element-card-title-${id}` }
       >
         {name}
+      </span>
+      <span
+        className="product-price"
+        data-testid={ `customer_products__element-card-price-${id}` }
+      >
+        { price.replace(/\./, ',') }
       </span>
       <div className="container-product-counter">
         <button

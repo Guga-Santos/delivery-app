@@ -27,4 +27,10 @@ export const createUserRequest = async (body, token) => {
   return data;
 };
 
+export const getAllProducts = async () => {
+  const { data } = await api.get('/products');
+
+  return data;
+};
+
 export default api;
