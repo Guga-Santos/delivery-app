@@ -1,0 +1,35 @@
+.navbar {
+  background-color: #036B52;
+  display: flex;
+  height: 60px;
+  width: 100vw;
+  justify-content: space-between;
+  list-style: none;  
+}
+
+.left {
+  width: 400px;
+  /* justify-content: space-between; */
+}
+
+.rigth {
+  width: 300px;
+}
+
+.left, .rigth {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  justify-content: space-between;
+  flex-direction: row;
+  /* background-color: red; */
+}
+
+.left li a, .rigth li a {
+  color: #F2FFFC;
+  
+}
+
+.produtos {
+  padding: 20px 0;
+}
