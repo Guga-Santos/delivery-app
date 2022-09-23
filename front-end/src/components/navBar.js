@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../App.css';
 import './navBar.css';
 
 export default function NavBar() {
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    setUser(JSON.parse(localStorage.getItem('user')));
+  }, []);
+
   return (
     <div className="nav">
       <ul className="navbar">
@@ -31,13 +37,14 @@ export default function NavBar() {
               to="/"
               data-testid="customer_products__element-navbar-user-full-name"
             >
-              (NOME DO USUARIO LOGADO)
+              { user?.name }
             </Link>
           </li>
           <li>
             <Link
-              to="logout"
+              to="/"
               data-testid="customer_products__element-navbar-link-logout"
+              onClick={ () => localStorage.removeItem('user') }
             >
               Sair
             </Link>
