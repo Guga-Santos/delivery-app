@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
 import '../App.css';
 import { loginRequest } from '../service/api';
 
 export default function LoginForm() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [disabled, setDisabled] = useState(true);
   const [notFound, setNotFound] = useState(false);
+  const [signIn, setSignIn] = useState(false);
+  const [role, setRole] = useState('');
 
   const passwordMin = 6;
 
@@ -19,10 +23,26 @@ export default function LoginForm() {
     }
   }, [email, password]);
 
+  useEffect(() => {
+    if (role === 'customer') {
+      setRole('/customer/products');
+      setSignIn(true);
+    }
+    if (role === 'seller') {
+      setRole('/seller/orders');
+      setSignIn(true);
+    }
+    if (role === 'administrator') {
+      setRole('/admin/manage');
+      setSignIn(true);
+    }
+  }, [role]);
+
   const handleLoginClick = async () => {
     try {
-      const test = await loginRequest('/login', { email, password });
-      console.log(test);
+      const { user } = await loginRequest('/login', { email, password });
+      console.log(user.role);
+      setRole(user.role);
     } catch (error) {
       console.log(error);
       setNotFound(true);
@@ -31,6 +51,7 @@ export default function LoginForm() {
 
   return (
     <div className="login-container">
+      { signIn && <Navigate to={ role } /> }
       <label htmlFor="email-input">
         <input
           type="email"
@@ -64,6 +85,7 @@ export default function LoginForm() {
         className="login-buttons"
         type="button"
         data-testid="common_login__button-register"
+        onClick={ () => navigate('/register') }
       >
         Ainda não tenho conta
       </button>
