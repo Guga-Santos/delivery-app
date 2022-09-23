@@ -109,7 +109,7 @@ describe(requirement(37), () => {
   });
 });
 
-describe(requirement(38), () => {
+describe.only(requirement(38), () => {
   const people = createUserForAdm(lengthRules);
 
   test(`O avaliador tentará realizar o fluxo de cadastro com ${people.length} pessoas usuárias, validando-os no banco`, async () => {

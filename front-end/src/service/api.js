@@ -14,8 +14,12 @@ export const usersRequest = async (endpoint) => {
   return data;
 };
 
-export const createUserRequest = async (endpoint, body) => {
-  const { data } = await api.post(endpoint, body);
+export const createUserRequest = async (body, token) => {
+  const adminApi = axios.create({
+    baseURL: 'http://localhost:3001',
+    headers: { authorization: token },
+  });
+  const { data } = await adminApi.post('/users/admin/create', body);
   return data;
 };
 
