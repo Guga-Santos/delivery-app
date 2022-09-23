@@ -23,12 +23,26 @@ export default function LoginForm() {
     }
   }, [email, password]);
 
+  useEffect(() => {
+    if (role === 'customer') {
+      setRole('/customer/products');
+      setSignIn(true);
+    }
+    if (role === 'seller') {
+      setRole('/seller/orders');
+      setSignIn(true);
+    }
+    if (role === 'administrator') {
+      setRole('/admin/manage');
+      setSignIn(true);
+    }
+  }, [role]);
+
   const handleLoginClick = async () => {
     try {
       const { user } = await loginRequest('/login', { email, password });
       console.log(user.role);
       setRole(user.role);
-      setSignIn(true);
     } catch (error) {
       console.log(error);
       setNotFound(true);
@@ -37,7 +51,7 @@ export default function LoginForm() {
 
   return (
     <div className="login-container">
-      { signIn && <Navigate to={ `/${role}/products` } /> }
+      { signIn && <Navigate to={ role } /> }
       <label htmlFor="email-input">
         <input
           type="email"
