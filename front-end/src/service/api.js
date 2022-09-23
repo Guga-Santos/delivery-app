@@ -9,6 +9,10 @@ export const loginRequest = async (endpoint, body) => {
   return data;
 };
 
+export const registerRequest = async (endpoint, body) => {
+  await api.post(endpoint, body);
+};
+
 export const usersRequest = async (endpoint) => {
   const data = await api.get(endpoint);
   return data;
