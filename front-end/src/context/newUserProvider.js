@@ -8,8 +8,11 @@ export default function NewUserProvider({ children }) {
   const [newUserPassword, setNewUserPassword] = useState('');
   const [newUserRole, setNewUserRole] = useState('customer');
   const [refresh, setRefresh] = useState(false);
+  const [exist, setExist] = useState(false);
 
   const context = useMemo(() => ({
+    exist,
+    setExist,
     refresh,
     setRefresh,
     newUserName,
@@ -25,7 +28,8 @@ export default function NewUserProvider({ children }) {
     newUserEmail,
     newUserName,
     newUserPassword,
-    newUserRole]);
+    newUserRole,
+    exist]);
 
   return (
     <NewUserContext.Provider value={ context }>

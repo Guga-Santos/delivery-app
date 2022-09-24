@@ -11,7 +11,7 @@ const AdminController = {
   createUser: async (req, res) => {
     const newUser = await AdminService.createUser(req.body);
     if (!newUser) {
-      return res.status(401).json({ message: 'User already exist' });
+      return res.status(409).json({ message: 'User already exist' });
     }
     res.status(201).json({ message: 'created' });
   },

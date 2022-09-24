@@ -21,6 +21,7 @@ export default function NewUserForm() {
     setNewUserPassword,
     newUserRole,
     setNewUserRole,
+    setExist,
   } = context;
 
   useEffect(() => {
@@ -38,13 +39,26 @@ export default function NewUserForm() {
 
   const handleClick = async () => {
     const user = JSON.parse(localStorage.getItem('user'));
-    await createUserRequest({
-      name: newUserName,
-      email: newUserEmail,
-      password: newUserPassword,
-      role: newUserRole,
-    }, user.token);
-    setRefresh(!refresh);
+    try {
+      await createUserRequest({
+        name: newUserName,
+        email: newUserEmail,
+        password: newUserPassword,
+        role: newUserRole,
+      }, user.token);
+      setRefresh(!refresh);
+      setNewUserEmail('');
+      setNewUserName('');
+      setNewUserPassword('');
+      setNewUserRole('customer');
+    } catch (err) {
+      setExist(true);
+      setRefresh(!refresh);
+      setNewUserEmail('');
+      setNewUserName('');
+      setNewUserPassword('');
+      setNewUserRole('customer');
+    }
   };
 
   return (
@@ -59,7 +73,10 @@ export default function NewUserForm() {
             name="input-name"
             data-testid="admin_manage__input-name"
             value={ newUserName }
-            onChange={ ({ target }) => setNewUserName(target.value) }
+            onChange={ ({ target }) => {
+              setNewUserName(target.value);
+              setExist(false);
+            } }
           />
         </label>
         <label htmlFor="input-email">
