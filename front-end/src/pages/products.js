@@ -1,21 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import NavBar from '../components/navBar';
 import ProductCard from '../components/productCard';
+import NewCartContext from '../context/newCartContext';
 import { getAllProducts } from '../service/api';
 
 export default function Products() {
   const [products, setProducts] = useState();
+  const { cart, setCart } = useContext(NewCartContext);
 
   useEffect(() => {
     const findAllProducts = async () => {
       const allProducts = await getAllProducts();
       setProducts(allProducts);
-
-      setUser(JSON.parse(localStorage.getItem('user')));
     };
-
+    const getLocal = JSON.parse(localStorage.getItem('cart'));
+    if (!getLocal) {
+      localStorage.setItem('cart', JSON.stringify([]));
+      setCart([]);
+    } else {
+      setCart(getLocal);
+    }
     findAllProducts();
-  }, []);
+  }, [setCart]);
 
   return (
     <div>
@@ -25,6 +31,12 @@ export default function Products() {
           display: 'flex',
           flexWrap: 'wrap' } }
       >
+        <p data-testid="customer_products__checkout-bottom-value">
+          {cart
+            .map((obj) => obj.price)
+            .reduce((a, b) => a + b, 0)
+            .toFixed(2).replace(/\./, ',')}
+        </p>
         {
           products?.map((product, index) => (
             <ProductCard

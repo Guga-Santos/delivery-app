@@ -7,7 +7,12 @@ export default function NavBar() {
   const [user, setUser] = useState();
 
   useEffect(() => {
-    setUser(JSON.parse(localStorage.getItem('user')));
+    const actualUser = JSON.parse(localStorage.getItem('user'));
+    if (!actualUser) {
+      setUser('');
+    } else {
+      setUser(actualUser);
+    }
   }, []);
 
   return (
@@ -37,7 +42,7 @@ export default function NavBar() {
               to="/"
               data-testid="customer_products__element-navbar-user-full-name"
             >
-              { user?.name }
+              { user && user.name }
             </Link>
           </li>
           <li>
@@ -51,7 +56,6 @@ export default function NavBar() {
           </li>
         </div>
       </ul>
-      navbar
     </div>
   );
 }

@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-constructed-context-values */
 import PropTypes from 'prop-types';
 import React, { useMemo, useState } from 'react';
 import NewUserContext from './newUserContext';
