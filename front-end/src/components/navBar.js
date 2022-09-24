@@ -7,13 +7,8 @@ export default function NavBar() {
   const [user, setUser] = useState();
 
   useEffect(() => {
-    const actualUser = JSON.parse(localStorage.getItem('user'));
-    if (!actualUser) {
-      setUser('');
-    } else {
-      setUser(actualUser);
-    }
-  }, []);
+    setUser(JSON.parse(localStorage.getItem('user')));
+  }, [user]);
 
   return (
     <div className="nav">
@@ -42,7 +37,7 @@ export default function NavBar() {
               to="/"
               data-testid="customer_products__element-navbar-user-full-name"
             >
-              { user && user.name }
+              { user?.name }
             </Link>
           </li>
           <li>

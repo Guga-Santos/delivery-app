@@ -21,7 +21,6 @@ export default function LoginForm() {
     } else {
       setDisabled(true);
     }
-    localStorage.setItem('user', JSON.stringify([]));
     localStorage.setItem('cart', JSON.stringify([]));
   }, [email, password]);
 
