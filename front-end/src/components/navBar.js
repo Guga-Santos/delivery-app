@@ -8,7 +8,7 @@ export default function NavBar() {
 
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem('user')));
-  }, []);
+  }, [user]);
 
   return (
     <div className="nav">
@@ -51,7 +51,6 @@ export default function NavBar() {
           </li>
         </div>
       </ul>
-      navbar
     </div>
   );
 }

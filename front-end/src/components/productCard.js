@@ -1,11 +1,74 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import NewCartContext from '../context/newCartContext';
 
-export default function ProductCard({ key, id, name, price, urlImage }) {
+export default function ProductCard({ id, name, price, urlImage }) {
   const [quantity, setQuantity] = useState(0);
+
+  const { setCart } = useContext(NewCartContext);
+
+  const handleClick = ({ target }) => {
+    const items = JSON.parse(localStorage.getItem('cart'));
+    if (target.className === 'sub') {
+      setQuantity(quantity - 1);
+      const indexOf = items.findIndex((obj) => obj.id === id);
+      items[indexOf].price -= +price;
+      localStorage.setItem('cart', JSON.stringify(items));
+      setCart(items);
+    }
+    if (target.className === 'sum') {
+      setQuantity(quantity + 1);
+      const indexOf = items.findIndex((obj) => obj.id === id);
+      if (indexOf < 0) {
+        localStorage
+          .setItem('cart', JSON
+            .stringify([...items, {
+              id,
+              name,
+              price: +price,
+              quantity: 1,
+              urlImage }]));
+        setCart([...items, {
+          id,
+          name,
+          price: +price,
+          quantity: 1,
+          urlImage }]);
+      }
+      items[indexOf].price += +price;
+      localStorage.setItem('cart', JSON.stringify(items));
+      setCart(items);
+    }
+  };
+
+  const handleChange = ({ target }) => {
+    setQuantity(target.value);
+
+    const items = JSON.parse(localStorage.getItem('cart'));
+    const indexOf = items.findIndex((obj) => obj.id === id);
+    if (indexOf < 0) {
+      localStorage
+        .setItem('cart', JSON
+          .stringify([...items, {
+            id,
+            name,
+            price: +price * target.value,
+            quantity: 1,
+            urlImage }]));
+      setCart([...items, {
+        id,
+        name,
+        price: +price * target.value,
+        quantity: 1,
+        urlImage }]);
+    }
+    items[indexOf].price = +price * target.value;
+    localStorage.setItem('cart', JSON.stringify(items));
+    setCart(items);
+  };
+
   return (
     <div
-      key={ key }
       className="card"
       style={ {
         display: 'flex',
@@ -34,24 +97,32 @@ export default function ProductCard({ key, id, name, price, urlImage }) {
       </span>
       <div className="container-product-counter">
         <button
+          id={ id }
           type="button"
-          className="product-sub"
+          style={ { width: '3vw' } }
+          className="sub"
           data-testid={ `customer_products__button-card-rm-item-${id}` }
-          onClick={ quantity > 0 ? () => setQuantity(quantity - 1) : '' }
+          onClick={ handleClick }
+          disabled={ quantity < 1 }
         >
           -
         </button>
         <input
           type="number"
+          min="0"
+          style={ { width: '3vw' } }
           className="product-quantity"
           data-testid={ `customer_products__input-card-quantity-${id}` }
           value={ quantity }
+          onChange={ handleChange }
         />
         <button
+          id={ id }
           type="button"
-          className="product-sum"
+          style={ { width: '3vw' } }
+          className="sum"
           data-testid={ `customer_products__button-card-add-item-${id}` }
-          onClick={ () => setQuantity(quantity + 1) }
+          onClick={ handleClick }
         >
           +
         </button>
@@ -61,7 +132,6 @@ export default function ProductCard({ key, id, name, price, urlImage }) {
 }
 
 ProductCard.propTypes = {
-  key: PropTypes.number.isRequired,
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,

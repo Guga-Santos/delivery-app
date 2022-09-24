@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-constructed-context-values */
 import PropTypes from 'prop-types';
 import React, { useMemo, useState } from 'react';
 import NewUserContext from './newUserContext';
@@ -7,10 +6,13 @@ export default function NewUserProvider({ children }) {
   const [newUserName, setNewUserName] = useState('');
   const [newUserEmail, setNewUserEmail] = useState('');
   const [newUserPassword, setNewUserPassword] = useState('');
-  const [newUserRole, setNewUserRole] = useState('');
+  const [newUserRole, setNewUserRole] = useState('customer');
   const [refresh, setRefresh] = useState(false);
+  const [exist, setExist] = useState(false);
 
   const context = useMemo(() => ({
+    exist,
+    setExist,
     refresh,
     setRefresh,
     newUserName,
@@ -26,7 +28,8 @@ export default function NewUserProvider({ children }) {
     newUserEmail,
     newUserName,
     newUserPassword,
-    newUserRole]);
+    newUserRole,
+    exist]);
 
   return (
     <NewUserContext.Provider value={ context }>
