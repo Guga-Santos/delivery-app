@@ -2,11 +2,20 @@ import React, { useEffect, useState } from 'react';
 
 export default function CheckoutList() {
   const [finalCart, setFinalCart] = useState();
+  const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem('cart'));
     setFinalCart(items);
-  }, []);
+  }, [refresh]);
+
+  const handleClick = ({ target }) => {
+    const filter = finalCart.filter((product) => product.name !== target.id);
+    console.log(filter);
+    setFinalCart(filter);
+    localStorage.setItem('cart', JSON.stringify(filter));
+    setRefresh(!refresh);
+  };
 
   return (
     <div
@@ -78,10 +87,12 @@ export default function CheckoutList() {
               </th>
               <th>
                 <button
+                  id={ product.name }
                   data-testid={
                     `customer_checkout__element-order-table-remove-${index}`
                   }
                   type="button"
+                  onClick={ (e) => handleClick(e) }
                 >
                   Remover
                 </button>
