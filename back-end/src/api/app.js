@@ -4,6 +4,7 @@ const LoginRoute = require('../routes/login.route');
 const RegisterRoute = require('../routes/register.route');
 const UserRoute = require('../routes/users.route');
 const ProductsRoute = require('../routes/products.route');
+const AdminRoute = require('../routes/admin.route');
 
 const app = express();
 app.use(express.json());
@@ -17,5 +18,6 @@ app.use(LoginRoute);
 app.use(RegisterRoute);
 app.use(UserRoute);
 app.use(ProductsRoute);
+app.use(AdminRoute);
 
 module.exports = app;

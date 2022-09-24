@@ -23,7 +23,7 @@ export const createUserRequest = async (body, token) => {
     baseURL: 'http://localhost:3001',
     headers: { authorization: token },
   });
-  const { data } = await adminApi.post('/users/admin/create', body);
+  const { data } = await adminApi.post('/admin/register', body);
   return data;
 };
 

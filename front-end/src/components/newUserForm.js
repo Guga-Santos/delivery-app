@@ -37,12 +37,13 @@ export default function NewUserForm() {
   }, [newUserName, newUserPassword, newUserEmail, newUserRole]);
 
   const handleClick = async () => {
-    await createUserRequest('/users', {
+    const user = JSON.parse(localStorage.getItem('user'));
+    await createUserRequest({
       name: newUserName,
       email: newUserEmail,
       password: newUserPassword,
       role: newUserRole,
-    });
+    }, user.token);
     setRefresh(!refresh);
   };
 
@@ -91,7 +92,6 @@ export default function NewUserForm() {
             value={ newUserRole }
             onChange={ ({ target }) => setNewUserRole(target.value) }
           >
-            <option value="">Selecione</option>
             <option value="seller">Vendedor</option>
             <option value="customer">Cliente</option>
             <option value="administrator">Administrador</option>

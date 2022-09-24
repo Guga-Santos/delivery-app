@@ -6,7 +6,7 @@ export default function NewUserProvider({ children }) {
   const [newUserName, setNewUserName] = useState('');
   const [newUserEmail, setNewUserEmail] = useState('');
   const [newUserPassword, setNewUserPassword] = useState('');
-  const [newUserRole, setNewUserRole] = useState('');
+  const [newUserRole, setNewUserRole] = useState('customer');
   const [refresh, setRefresh] = useState(false);
 
   const context = useMemo(() => ({
