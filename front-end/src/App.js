@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import NewUserProvider from './context/newUserProvider';
 import AdminArea from './pages/admin';
+import Checkout from './pages/checkout';
 import Home from './pages/home';
 import Login from './pages/login';
 import Products from './pages/products';
@@ -12,6 +13,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="customer/products" element={ <Products /> } />
+        <Route path="customer/checkout" element={ <Checkout /> } />
         <Route path="/register" element={ <Register /> } />
         <Route
           path="/admin/manage"
