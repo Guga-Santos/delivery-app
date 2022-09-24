@@ -30,7 +30,7 @@ beforeEach(async () => {
   ).toBeTruthy();
 });
 
-describe.only(requirement(17), () => {
+describe(requirement(17), () => {
   test("O avaliador testará os data-testids referentes aos itens do carrinho e demais elementos", async () => {
     for (let i = zero; i < itemList.cart.length; i += one) {
       await expect(page).toFindElement(
@@ -110,13 +110,13 @@ const validateProductItens = async ({ cart = [], totalPrice }) => {
   return true;
 }
 
-describe.only(requirement(18), () => {
+describe(requirement(18), () => {
   test("O avaliador testará se os itens contidos na venda correspondem aos itens do checkout", async () => {
     expect(await validateProductItens(itemList)).toBeTruthy();
   });
 });
 
-describe.only(requirement(19), () => {
+describe(requirement(19), () => {
   test(`O avaliador tentará realizar a remoção de itens validando-os na tabela`, async () => {
     const { productsToExclude, newCart } = cartReduced(itemList);
 

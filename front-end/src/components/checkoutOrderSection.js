@@ -1,8 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { usersRequest } from '../service/api';
+import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import NewCartContext from '../context/newCartContext';
+import { createSale, usersRequest } from '../service/api';
 
 export default function CheckoutOrderSection() {
   const [sellers, setSellers] = useState([]);
+  const [seller, setSeller] = useState('');
+  const [address, setAddress] = useState('');
+  const [addressNumber, setAddressNumber] = useState('');
+  const { cart } = useContext(NewCartContext);
+
+  const navigate = useNavigate();
+
   useEffect(() => {
     const getUsers = async () => {
       const { data } = await usersRequest('/users');
@@ -10,6 +19,20 @@ export default function CheckoutOrderSection() {
     };
     getUsers();
   }, []);
+
+  const handleClick = async () => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    const sale = await createSale({
+      user_id: user.id,
+      seller_id: seller,
+      total_price: cart.map((obj) => obj.price)
+        .reduce((a, b) => a + b, 0)
+        .toFixed(2),
+      delivery_address: address,
+      delivery_number: addressNumber }, user.token);
+
+    navigate(`../customer/orders/${sale.id}`);
+  };
 
   return (
     <div className="order-section-container">
@@ -20,14 +43,16 @@ export default function CheckoutOrderSection() {
             name="select-seller"
             id="select-seller"
             data-testid="customer_checkout__select-seller"
+            onChange={ ({ target }) => setSeller(target.value) }
+            value={ seller }
           >
-
-            { sellers && sellers.map((seller) => (
+            <option value="">Selecione</option>
+            { sellers && sellers.map((sel) => (
               <option
-                value="seller"
-                key={ seller.id }
+                value={ sel.id }
+                key={ sel.id }
               >
-                { seller.name }
+                { sel.name }
               </option>
             ))}
           </select>
@@ -39,6 +64,8 @@ export default function CheckoutOrderSection() {
             name="input-address"
             id="input-address"
             data-testid="customer_checkout__input-address"
+            onChange={ ({ target }) => setAddress(target.value) }
+            value={ address }
           />
         </label>
         <label htmlFor="input-address-number">
@@ -48,11 +75,14 @@ export default function CheckoutOrderSection() {
             name="input-address-number"
             id="input-address-number"
             data-testid="customer_checkout__input-address-number"
+            onChange={ ({ target }) => setAddressNumber(target.value) }
+            value={ addressNumber }
           />
         </label>
         <button
           type="button"
           data-testid="customer_checkout__button-submit-order"
+          onClick={ handleClick }
         >
           Finalizar Pedido
 

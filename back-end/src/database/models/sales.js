@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class sales extends Model {
+  class Sales extends Model {
     user_id;
     seller_id;
     total_price;
@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.sales_products, { foreignKey: 'id', as: 'sale_id' });
     }
   }
-  sales.init({
+  Sales.init({
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
@@ -30,12 +30,15 @@ module.exports = (sequelize, DataTypes) => {
     total_price: DataTypes.DECIMAL,
     delivery_address: DataTypes.STRING,
     delivery_number: DataTypes.STRING,
-    sale_date: DataTypes.DATE
+    sale_date: {
+      type: DataTypes.DATE,
+      defaultValue: new Date()
+    }
   }, {
     sequelize,
     modelName: 'sales',
     timestamps: false,
     underscored: true,
   });
-  return sales;
+  return Sales;
 };

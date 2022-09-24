@@ -33,4 +33,25 @@ export const getAllProducts = async () => {
   return data;
 };
 
+export const getAllSales = async () => {
+  const { data } = await api.get('/sales');
+
+  return data;
+};
+
+export const getSalesById = async (id) => {
+  const { data } = await api.get(`/sales/${id}`);
+
+  return data;
+};
+
+export const createSale = async (sale, token) => {
+  const config = {
+    headers: { Authorization: token },
+  };
+  const { data } = await api.post('/sales', sale, config);
+
+  return data;
+};
+
 export default api;
