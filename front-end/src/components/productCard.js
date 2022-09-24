@@ -13,6 +13,7 @@ export default function ProductCard({ id, name, price, urlImage }) {
       setQuantity(quantity - 1);
       const indexOf = items.findIndex((obj) => obj.id === id);
       items[indexOf].price -= +price;
+      items[indexOf].quantity -= 1;
       localStorage.setItem('cart', JSON.stringify(items));
       setCart(items);
     }
@@ -36,6 +37,7 @@ export default function ProductCard({ id, name, price, urlImage }) {
           urlImage }]);
       }
       items[indexOf].price += +price;
+      items[indexOf].quantity += 1;
       localStorage.setItem('cart', JSON.stringify(items));
       setCart(items);
     }

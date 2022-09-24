@@ -8,7 +8,7 @@ export default function NavBar() {
 
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem('user')));
-  }, [user]);
+  }, []);
 
   return (
     <div className="nav">
@@ -16,7 +16,7 @@ export default function NavBar() {
         <div className="left">
           <li className="produtos">
             <Link
-              to="produtos"
+              to="../customer/products"
               data-testid="customer_products__element-navbar-link-products"
             >
               PRODUTOS

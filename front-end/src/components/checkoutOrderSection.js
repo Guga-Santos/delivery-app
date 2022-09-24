@@ -1,0 +1,93 @@
+import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import NewCartContext from '../context/newCartContext';
+import { createSale, usersRequest } from '../service/api';
+
+export default function CheckoutOrderSection() {
+  const [sellers, setSellers] = useState([]);
+  const [seller, setSeller] = useState('');
+  const [address, setAddress] = useState('');
+  const [addressNumber, setAddressNumber] = useState('');
+  const { cart } = useContext(NewCartContext);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const getUsers = async () => {
+      const { data } = await usersRequest('/users');
+      setSellers(data.filter((user) => user.role === 'seller'));
+    };
+    getUsers();
+  }, []);
+
+  const handleClick = async () => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    const sale = await createSale({
+      user_id: user.id,
+      seller_id: seller,
+      total_price: cart.map((obj) => obj.price)
+        .reduce((a, b) => a + b, 0)
+        .toFixed(2),
+      delivery_address: address,
+      delivery_number: addressNumber }, user.token);
+
+    navigate(`../customer/orders/${sale.id}`);
+  };
+
+  return (
+    <div className="order-section-container">
+      <section>
+        <label htmlFor="select-seller">
+          <p>P. Vendedora Responsável</p>
+          <select
+            name="select-seller"
+            id="select-seller"
+            data-testid="customer_checkout__select-seller"
+            onChange={ ({ target }) => setSeller(target.value) }
+            value={ seller }
+          >
+            <option value="">Selecione</option>
+            { sellers && sellers.map((sel) => (
+              <option
+                value={ sel.id }
+                key={ sel.id }
+              >
+                { sel.name }
+              </option>
+            ))}
+          </select>
+        </label>
+        <label htmlFor="input-address">
+          <p>Endereço</p>
+          <input
+            type="text"
+            name="input-address"
+            id="input-address"
+            data-testid="customer_checkout__input-address"
+            onChange={ ({ target }) => setAddress(target.value) }
+            value={ address }
+          />
+        </label>
+        <label htmlFor="input-address-number">
+          <p>Número</p>
+          <input
+            type="text"
+            name="input-address-number"
+            id="input-address-number"
+            data-testid="customer_checkout__input-address-number"
+            onChange={ ({ target }) => setAddressNumber(target.value) }
+            value={ addressNumber }
+          />
+        </label>
+        <button
+          type="button"
+          data-testid="customer_checkout__button-submit-order"
+          onClick={ handleClick }
+        >
+          Finalizar Pedido
+
+        </button>
+      </section>
+    </div>
+  );
+}
