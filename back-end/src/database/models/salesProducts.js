@@ -5,14 +5,18 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class SalesProducts extends Model {
     static associate(models) {
-      this.belongsTo(models.products, { foreignKey: 'productId', as: 'product' });
-      this.belongsTo(models.sales, { foreignKey: 'saleId', as: 'sale' });
+      SalesProducts.belongsTo(models.products, { foreignKey: 'productId', as: 'product' });
+      SalesProducts.belongsTo(models.sales, { foreignKey: 'saleId', as: 'sale' });
     }
   }
   SalesProducts.init({
+    id: {
+      primaryKey: true,
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+    },
     saleId: {
       allowNull: false,
-      primaryKey: true,
       type: DataTypes.INTEGER,
       references: {
         model: 'sales',
@@ -21,7 +25,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     productId: {
       allowNull: false,
-      primaryKey: true,
       type: DataTypes.INTEGER,
       references: {
         model: 'products',
@@ -32,6 +35,9 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'salesProducts',
+    tableName: 'sales_products',
+    timestamps: false,
+    underscored: true,
   });
   return SalesProducts;
 };

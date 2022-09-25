@@ -1,7 +1,6 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
+const moment = require('moment')
 module.exports = (sequelize, DataTypes) => {
   class Sales extends Model {
     static associate(models) {

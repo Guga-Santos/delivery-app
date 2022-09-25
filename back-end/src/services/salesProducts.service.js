@@ -1,15 +1,10 @@
 const Model = require('../database/models');
 
 const SalesProductsService = {
-  create: async () => {
-    const sale = await Model.salesProducts.create({
-      saleId: 1,
-      productId: 1,
-      quantity: 1,
-      });
-
-    return sale;
+  create: async (data) => {
+    await Model.salesProducts.create(data);
   }, 
+
   getAll: async () => {
     try {
       const sales = await Model.salesProducts.findAll();

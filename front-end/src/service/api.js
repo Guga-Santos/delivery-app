@@ -54,4 +54,13 @@ export const createSale = async (sale, token) => {
   return data;
 };
 
+export const createSaleProducts = async (body, token) => {
+  const config = {
+    headers: { Authorization: token },
+  };
+  const { data } = await api.post('/salesProducts', body, config);
+
+  return data;
+};
+
 export default api;
