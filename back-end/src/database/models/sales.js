@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       { foreignKey: 'user_id', as: 'user' },
       { foreignKey: 'seller_id', as: 'seller' })
 
-      this.hasMany(models.sales_products, { foreignKey: 'id', as: 'sale_id' });
+      this.hasMany(models.salesProducts, { foreignKey: 'id', as: 'sale_id' });
     }
   }
   Sales.init({
@@ -25,14 +25,18 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true,
       primaryKey: true
     },
-    user_id: DataTypes.INTEGER,
-    seller_id: DataTypes.INTEGER,
-    total_price: DataTypes.DECIMAL,
-    delivery_address: DataTypes.STRING,
-    delivery_number: DataTypes.STRING,
-    sale_date: {
+    userId: DataTypes.INTEGER,
+    sellerId: DataTypes.INTEGER,
+    totalPrice: DataTypes.DECIMAL,
+    deliveryAddress: DataTypes.STRING,
+    deliveryNumber: DataTypes.STRING,
+    saleDate: {
       type: DataTypes.DATE,
       defaultValue: new Date()
+    },
+    status: {
+      type: DataTypes.STRING,
+      defaultValue: 'Pendente',
     }
   }, {
     sequelize,

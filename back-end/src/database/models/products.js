@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     url_image;
 
     static associate(models) {
-      this.hasMany(models.sales_products, { foreignKey: 'id', as: 'product_id' });
+      this.hasMany(models.salesProducts, { foreignKey: 'id', as: 'product_id' });
     }
     }
   
@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       unique: true,
   },
     price: DataTypes.DECIMAL(4,2),
-    url_image: DataTypes.STRING
+    urlImage: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'products',
