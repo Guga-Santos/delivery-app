@@ -23,13 +23,13 @@ export default function CheckoutOrderSection() {
   const handleClick = async () => {
     const user = JSON.parse(localStorage.getItem('user'));
     const sale = await createSale({
-      user_id: user.id,
-      seller_id: seller,
-      total_price: cart.map((obj) => obj.price)
+      userId: user.id,
+      sellerId: seller,
+      totalPrice: cart.map((obj) => obj.price)
         .reduce((a, b) => a + b, 0)
         .toFixed(2),
-      delivery_address: address,
-      delivery_number: addressNumber }, user.token);
+      deliveryAddress: address,
+      deliveryNumber: addressNumber }, user.token);
 
     navigate(`../customer/orders/${sale.id}`);
   };
