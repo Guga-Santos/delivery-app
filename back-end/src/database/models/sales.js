@@ -1,22 +1,14 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
+const moment = require('moment')
 module.exports = (sequelize, DataTypes) => {
   class Sales extends Model {
-    user_id;
-    seller_id;
-    total_price;
-    delivery_address;
-    delivery_number;
-    sale_date;
-
     static associate(models) {
       this.belongsTo(models.users, 
-      { foreignKey: 'user_id', as: 'user' },
-      { foreignKey: 'seller_id', as: 'seller' })
+      { foreignKey: 'userId', as: 'user' },
+      { foreignKey: 'sellerId', as: 'seller' })
 
-      this.hasMany(models.sales_products, { foreignKey: 'id', as: 'sale_id' });
+      this.hasMany(models.salesProducts, { foreignKey: 'id', as: 'saleId' });
     }
   }
   Sales.init({
@@ -25,14 +17,18 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true,
       primaryKey: true
     },
-    user_id: DataTypes.INTEGER,
-    seller_id: DataTypes.INTEGER,
-    total_price: DataTypes.DECIMAL,
-    delivery_address: DataTypes.STRING,
-    delivery_number: DataTypes.STRING,
-    sale_date: {
+    userId: DataTypes.INTEGER,
+    sellerId: DataTypes.INTEGER,
+    totalPrice: DataTypes.DECIMAL,
+    deliveryAddress: DataTypes.STRING,
+    deliveryNumber: DataTypes.STRING,
+    saleDate: {
       type: DataTypes.DATE,
       defaultValue: new Date()
+    },
+    status: {
+      type: DataTypes.STRING,
+      defaultValue: 'Pendente',
     }
   }, {
     sequelize,

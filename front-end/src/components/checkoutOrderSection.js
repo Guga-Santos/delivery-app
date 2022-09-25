@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import NewCartContext from '../context/newCartContext';
-import { createSale, usersRequest } from '../service/api';
+import { createSale, createSaleProducts, usersRequest } from '../service/api';
+
+const moment = require('moment');
 
 export default function CheckoutOrderSection() {
   const [sellers, setSellers] = useState([]);
@@ -11,6 +13,7 @@ export default function CheckoutOrderSection() {
   const { cart } = useContext(NewCartContext);
 
   const navigate = useNavigate();
+  const newdate = moment(new Date()).locale('pt-br').format('DD/MM/YYYY');
 
   useEffect(() => {
     const getUsers = async () => {
@@ -22,14 +25,21 @@ export default function CheckoutOrderSection() {
 
   const handleClick = async () => {
     const user = JSON.parse(localStorage.getItem('user'));
-    const sale = await createSale({
-      user_id: user.id,
-      seller_id: seller,
-      total_price: cart.map((obj) => obj.price)
-        .reduce((a, b) => a + b, 0)
-        .toFixed(2),
-      delivery_address: address,
-      delivery_number: addressNumber }, user.token);
+    const sale = await createSale(
+      {
+        userId: user.id,
+        sellerId: seller,
+        totalPrice: cart.map((obj) => obj.price)
+          .reduce((a, b) => a + b, 0)
+          .toFixed(2),
+        deliveryAddress: address,
+        deliveryNumber: addressNumber,
+        saleDate: moment(new Date()) },
+      user.token,
+    );
+    console.log(newdate);
+    await createSaleProducts({ saleId: sale.id, data: cart }, user.token);
+    localStorage.removeItem('cart');
 
     navigate(`../customer/orders/${sale.id}`);
   };
