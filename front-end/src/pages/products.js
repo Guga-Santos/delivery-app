@@ -58,7 +58,7 @@ export default function Products() {
                 id={ index + 1 }
                 name={ product.name }
                 price={ product.price }
-                urlImage={ product.url_image }
+                urlImage={ product.urlImage }
               />
             ))
           }

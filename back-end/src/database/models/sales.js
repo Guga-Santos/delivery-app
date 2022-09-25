@@ -4,19 +4,12 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Sales extends Model {
-    user_id;
-    seller_id;
-    total_price;
-    delivery_address;
-    delivery_number;
-    sale_date;
-
     static associate(models) {
       this.belongsTo(models.users, 
-      { foreignKey: 'user_id', as: 'user' },
-      { foreignKey: 'seller_id', as: 'seller' })
+      { foreignKey: 'userId', as: 'user' },
+      { foreignKey: 'sellerId', as: 'seller' })
 
-      this.hasMany(models.salesProducts, { foreignKey: 'id', as: 'sale_id' });
+      this.hasMany(models.salesProducts, { foreignKey: 'id', as: 'saleId' });
     }
   }
   Sales.init({
