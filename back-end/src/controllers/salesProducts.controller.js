@@ -2,7 +2,7 @@ const SalesProductsService = require('../services/salesProducts.service');
 
 const SalesProductsController = {
   create: async (req, res) => {
-    const { saleId, data } = req.body;
+    // const { saleId, data } = req.body;
     const sale = SalesProductsService.create();
     // Promise.all(data.map((product) => SalesProductsService
     //     .create({

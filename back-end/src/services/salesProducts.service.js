@@ -5,7 +5,7 @@ const SalesProductsService = {
     const sale = await Model.salesProducts.create({
       saleId: 1,
       productId: 1,
-      quantity: 1
+      quantity: 1,
       });
 
     return sale;
@@ -15,12 +15,9 @@ const SalesProductsService = {
       const sales = await Model.salesProducts.findAll();
       // if (sales.length < 1) return null;
       return sales;
-
-    }catch (err) {
-      return null
+    } catch (err) {
+      return null;
     }
-    
-
   },
 };
 
