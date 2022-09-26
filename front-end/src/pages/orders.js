@@ -23,6 +23,7 @@ export default function Orders() {
           orders.map((order, index) => (
             <OrderCard
               key={ order.id }
+              orderId={ order.id }
               id={ index + 1 }
               status={ order.status }
               saleDate={ order.saleDate }
