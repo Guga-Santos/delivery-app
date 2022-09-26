@@ -63,4 +63,10 @@ export const createSaleProducts = async (body, token) => {
   return data;
 };
 
+export const getProductById = async (id) => {
+  const { data } = await api.get(`/products/${id}`);
+
+  return data;
+};
+
 export default api;
