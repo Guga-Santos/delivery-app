@@ -4,6 +4,7 @@ import AdminArea from './pages/admin';
 import Home from './pages/home';
 import Login from './pages/login';
 import Register from './pages/register';
+import Costumer from './pages/costumer';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/admin/manage" element={ <AdminArea /> } />
         <Route path="/login" element={ <Login /> } />
         <Route path="/" element={ <Home /> } />
+        <Route path="/customer/checkout" element={ <Costumer /> } />
       </Routes>
     </BrowserRouter>
   );
