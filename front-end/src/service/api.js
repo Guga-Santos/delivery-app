@@ -18,8 +18,48 @@ export const usersRequest = async (endpoint) => {
   return data;
 };
 
-export const createUserRequest = async (endpoint, body) => {
-  const { data } = await api.post(endpoint, body);
+export const createUserRequest = async (body, token) => {
+  const adminApi = axios.create({
+    baseURL: 'http://localhost:3001',
+    headers: { authorization: token },
+  });
+  const { data } = await adminApi.post('/admin/register', body);
+  return data;
+};
+
+export const getAllProducts = async () => {
+  const { data } = await api.get('/products');
+
+  return data;
+};
+
+export const getAllSales = async () => {
+  const { data } = await api.get('/sales');
+
+  return data;
+};
+
+export const getSalesById = async (id) => {
+  const { data } = await api.get(`/sales/${id}`);
+
+  return data;
+};
+
+export const createSale = async (sale, token) => {
+  const config = {
+    headers: { Authorization: token },
+  };
+  const { data } = await api.post('/sales', sale, config);
+
+  return data;
+};
+
+export const createSaleProducts = async (body, token) => {
+  const config = {
+    headers: { Authorization: token },
+  };
+  const { data } = await api.post('/salesProducts', body, config);
+
   return data;
 };
 

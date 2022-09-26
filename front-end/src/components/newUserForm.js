@@ -21,6 +21,7 @@ export default function NewUserForm() {
     setNewUserPassword,
     newUserRole,
     setNewUserRole,
+    setExist,
   } = context;
 
   useEffect(() => {
@@ -37,13 +38,27 @@ export default function NewUserForm() {
   }, [newUserName, newUserPassword, newUserEmail, newUserRole]);
 
   const handleClick = async () => {
-    await createUserRequest('/users', {
-      name: newUserName,
-      email: newUserEmail,
-      password: newUserPassword,
-      role: newUserRole,
-    });
-    setRefresh(!refresh);
+    const user = JSON.parse(localStorage.getItem('user'));
+    try {
+      await createUserRequest({
+        name: newUserName,
+        email: newUserEmail,
+        password: newUserPassword,
+        role: newUserRole,
+      }, user.token);
+      setRefresh(!refresh);
+      setNewUserEmail('');
+      setNewUserName('');
+      setNewUserPassword('');
+      setNewUserRole('customer');
+    } catch (err) {
+      setExist(true);
+      setRefresh(!refresh);
+      setNewUserEmail('');
+      setNewUserName('');
+      setNewUserPassword('');
+      setNewUserRole('customer');
+    }
   };
 
   return (
@@ -58,7 +73,10 @@ export default function NewUserForm() {
             name="input-name"
             data-testid="admin_manage__input-name"
             value={ newUserName }
-            onChange={ ({ target }) => setNewUserName(target.value) }
+            onChange={ ({ target }) => {
+              setNewUserName(target.value);
+              setExist(false);
+            } }
           />
         </label>
         <label htmlFor="input-email">
@@ -91,7 +109,6 @@ export default function NewUserForm() {
             value={ newUserRole }
             onChange={ ({ target }) => setNewUserRole(target.value) }
           >
-            <option value="">Selecione</option>
             <option value="seller">Vendedor</option>
             <option value="customer">Cliente</option>
             <option value="administrator">Administrador</option>

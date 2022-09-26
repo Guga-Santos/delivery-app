@@ -3,46 +3,50 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('sales', {
       id: {
+        type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
       },
-      user_id: {
-        alowNull: false,
+      userId: {
         type: Sequelize.INTEGER,
-        references: {
-          model: 'users',
-          key: 'id',
-        },
+        allowNull: false,
+        foreignKey: true,
+        field: 'user_id',
       },
-      seller_id: {
-        alowNull: false,
+      sellerId: {
         type: Sequelize.INTEGER,
-        references: {
-          model: 'users',
-          key: 'id',
-        },
+        allowNull: false,
+        foreignKey: true,
+        field: 'seller_id',
       },
-      total_price: {
-        alowNull: false,
-        type: Sequelize.DECIMAL(9, 2)
+      totalPrice: {
+        type: Sequelize.DECIMAL(9, 2),
+        allowNull: false,
+        field: 'total_price',
       },
-      delivery_address: {
-        alowNull: false,
-        type: Sequelize.STRING
+      deliveryAddress: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        field: 'delivery_address',
       },
-      delivery_number: {
-        alowNull: false,
-        type: Sequelize.STRING
+      deliveryNumber: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        field: 'delivery_number',
       },
-      sale_date: {
-        alowNull: false,
-        type: Sequelize.DATE
+      saleDate: {
+        type: Sequelize.DATE,
+        allowNull: false,
+        field: 'sale_date',
       },
-    }, { timestamps: false });
+      status: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+    });
   },
-  async down(queryInterface, Sequelize) {
+  async down(queryInterface, _Sequelize) {
     await queryInterface.dropTable('sales');
   }
 };

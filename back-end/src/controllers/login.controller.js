@@ -9,5 +9,6 @@ const LoginController = {
     res.status(200).json({ user });
   },
 };
+// lint
 
 module.exports = LoginController;

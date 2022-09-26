@@ -21,6 +21,7 @@ export default function LoginForm() {
     } else {
       setDisabled(true);
     }
+    localStorage.setItem('cart', JSON.stringify([]));
   }, [email, password]);
 
   useEffect(() => {
@@ -41,6 +42,7 @@ export default function LoginForm() {
   const handleLoginClick = async () => {
     try {
       const { user } = await loginRequest('/login', { email, password });
+      localStorage.setItem('user', JSON.stringify(user));
       console.log(user.role);
       setRole(user.role);
     } catch (error) {

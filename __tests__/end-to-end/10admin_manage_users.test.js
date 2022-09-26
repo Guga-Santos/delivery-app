@@ -121,7 +121,7 @@ describe(requirement(38), () => {
   });
 });
 
-describe(requirement(39), () => {
+describe.only(requirement(39), () => {
   const testUser = newUser({ passwordLen: lengthRules.password });
   testUser.role = Math.round(Math.random()) ? "seller" : "customer";
 

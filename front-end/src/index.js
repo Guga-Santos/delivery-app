@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import NewUserProvider from './context/newUserProvider';
+import NewCartProvider from './context/newCartProvider';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <NewUserProvider>
+    <NewCartProvider>
       <App />
-    </NewUserProvider>
+    </NewCartProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );
