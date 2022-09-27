@@ -1,15 +1,15 @@
 .sale-card {
-  display: flex;
-  width: 500px;
-  height: 100px;
-  background-color: #B1C2BE;
-  text-decoration: none;
+  background-color: #c1c2bE;
   color: black;
+  display: flex;
+  height: 100px;
+  text-decoration: none;
+  width: 500px;
 }
 
 .container-order {
   align-items: center;
-  background-color: #EAF1EF;
+  background-color: #eaf1ef;
   display: flex;
   flex-direction: column;
   justify-content: center;
