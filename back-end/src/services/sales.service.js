@@ -21,6 +21,12 @@ const SalesService = {
 
     return sale;
   },
+
+  findByUserId: async (userId) => {
+    const sales = await Model.sales.findAll({ where: { userId } });
+
+    return sales;
+  },
 };
 
 module.exports = SalesService;
