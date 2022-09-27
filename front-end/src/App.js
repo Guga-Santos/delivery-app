@@ -7,6 +7,7 @@ import Home from './pages/home';
 import Login from './pages/login';
 import Products from './pages/products';
 import Register from './pages/register';
+import OrderDetails from './pages/details';
 import Orders from './pages/orders';
 import SellerOrderDetails from './pages/sellerOrderDetails';
 
@@ -29,6 +30,7 @@ function App() {
         />
         <Route path="/login" element={ <Login /> } />
         <Route path="/" element={ <Home /> } />
+        <Route path="/customer/orders/:id" element={ <OrderDetails /> } />
       </Routes>
     </BrowserRouter>
   );
