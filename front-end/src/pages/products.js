@@ -28,7 +28,7 @@ export default function Products() {
 
   return (
     <div>
-      <NavBar>produtos</NavBar>
+      <NavBar />
       <main
         style={ { display: 'flex', flexDirection: 'column' } }
       >
