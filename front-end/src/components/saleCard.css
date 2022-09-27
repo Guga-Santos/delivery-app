@@ -1,0 +1,30 @@
+.sale-card {
+  display: flex;
+  width: 500px;
+  height: 100px;
+  background-color: #B1C2BE;
+  text-decoration: none;
+  color: black;
+}
+
+.container-order {
+  align-items: center;
+  background-color: #EAF1EF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container-order-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.container-order-top {
+  display: flex;
+}
+
+.container-order-others {
+  display: flex;
+  flex-direction: column;
+}
