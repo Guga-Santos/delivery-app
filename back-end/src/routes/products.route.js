@@ -5,6 +5,6 @@ const products = Router();
 
 products
 .get('/products/:id', ProductsController.getByPk)
-.get('/products', ProductsController.getAll)
+.get('/products', ProductsController.getAll);
 
 module.exports = products;

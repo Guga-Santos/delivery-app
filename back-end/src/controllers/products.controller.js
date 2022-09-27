@@ -8,11 +8,11 @@ const ProductsController = {
   },
 
   getByPk: async (req, res) => {
-    const { id } = req.params
+    const { id } = req.params;
     const products = await ProductService.getByPk(id); 
 
-    res.status(200).json(products)
-  }
+    res.status(200).json(products);
+  },
 };
 
 module.exports = ProductsController;
