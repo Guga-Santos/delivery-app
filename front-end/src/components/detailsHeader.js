@@ -6,23 +6,21 @@ const moment = require('moment');
 
 export default function DetailsList() {
   const [seller, setSeller] = useState();
-  const [salesDate, setSalesDate] = useState();
-  const [salesStatus, setSaleStatus] = useState();
+  const [sales, setSales] = useState();
   const params = useParams();
 
   useEffect(() => {
     const result = JSON.parse(localStorage.getItem('sellerInfo'));
     const getSales = async () => {
-      const filterResult = await getAllSales();
+      const findResult = await getAllSales();
+      const teste = findResult.find((sale) => sale.id === Number(params.id));
 
-      return filterResult.filter((sale) => sale.id === params.id);
+      return setSales(teste);
     };
-    setSalesDate(getSales()[0]?.saleDate);
-    setSaleStatus(getSales()[0]?.status);
+    getSales();
     setSeller(result);
   }, [params.id]);
-  const newdate = moment(salesDate).locale('pt-br').format('DD/MM/YYYY');
-  console.log(salesStatus);
+  const newdate = moment(sales?.saleDate).locale('pt-br').format('DD/MM/YYYY');
   return (
     <>
       <h2>
@@ -61,7 +59,7 @@ export default function DetailsList() {
           data-testid={ 'customer_order_details__element-'
           + 'order-details-label-delivery-status' }
         >
-          {salesStatus}
+          {sales?.status}
         </h2>
       </label>
       <button
@@ -70,7 +68,6 @@ export default function DetailsList() {
         disabled="true"
       >
         MARCAR COMO ENTREGUE
-
       </button>
     </>
   );

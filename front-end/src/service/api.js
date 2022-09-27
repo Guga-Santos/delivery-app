@@ -35,7 +35,7 @@ export const getAllProducts = async () => {
 
 export const getAllSales = async () => {
   const { data } = await api.get('/sales');
-
+  console.log(data);
   return data;
 };
 
