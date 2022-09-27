@@ -7,7 +7,7 @@ const moment = require('moment');
 
 export default function CheckoutOrderSection() {
   const [sellers, setSellers] = useState([]);
-  const [seller, setSeller] = useState('');
+  const [sellerId, setSeller] = useState('');
   const [address, setAddress] = useState('');
   const [addressNumber, setAddressNumber] = useState('');
   const { cart } = useContext(NewCartContext);
@@ -28,7 +28,7 @@ export default function CheckoutOrderSection() {
     const sale = await createSale(
       {
         userId: user.id,
-        sellerId: seller,
+        sellerId,
         totalPrice: cart.map((obj) => obj.price)
           .reduce((a, b) => a + b, 0)
           .toFixed(2),
@@ -39,8 +39,8 @@ export default function CheckoutOrderSection() {
     );
     console.log(newdate);
     await createSaleProducts({ saleId: sale.id, data: cart }, user.token);
-    localStorage.removeItem('cart');
-
+    // localStorage.removeItem('cart');
+    localStorage.setItem('sellerInfo', JSON.stringify(sellers[0]));
     navigate(`../customer/orders/${sale.id}`);
   };
 
@@ -54,7 +54,7 @@ export default function CheckoutOrderSection() {
             id="select-seller"
             data-testid="customer_checkout__select-seller"
             onChange={ ({ target }) => setSeller(target.value) }
-            value={ seller }
+            value={ sellerId }
           >
             <option value="">Selecione</option>
             { sellers && sellers.map((sel) => (

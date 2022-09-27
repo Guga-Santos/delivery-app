@@ -6,6 +6,12 @@ const ProductService = {
 
     return products;
   },
+
+  getByPk: async (id) => {
+      const products = await Model.products.findByPk(id);
+
+      return products;
+  },
 };
 
 module.exports = ProductService;
