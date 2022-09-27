@@ -69,4 +69,9 @@ export const createSaleProducts = async (body, token) => {
   return data;
 };
 
+export const getOrdersByUserId = async (userId) => {
+  const { data } = await api.get(`/sales/userId/${userId}`);
+  return data;
+};
+
 export default api;

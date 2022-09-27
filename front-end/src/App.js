@@ -8,11 +8,13 @@ import Login from './pages/login';
 import Products from './pages/products';
 import Register from './pages/register';
 import Seller from './pages/seller';
+import Orders from './pages/orders';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/customer/orders" element={ <Orders /> } />
         <Route path="customer/products" element={ <Products /> } />
         <Route path="customer/checkout" element={ <Checkout /> } />
         <Route path="/register" element={ <Register /> } />
