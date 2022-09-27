@@ -45,6 +45,12 @@ export const getSalesById = async (id) => {
   return data;
 };
 
+export const getSalesBySellerId = async (id) => {
+  const { data } = await api.get(`/seller/${id}`);
+
+  return data;
+};
+
 export const createSale = async (sale, token) => {
   const config = {
     headers: { Authorization: token },

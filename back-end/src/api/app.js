@@ -7,6 +7,7 @@ const ProductsRoute = require('../routes/products.route');
 const AdminRoute = require('../routes/admin.route');
 const SalesRoute = require('../routes/sales.route');
 const SalesProductsRoute = require('../routes/salesProducts.route');
+const SellerRoute = require('../routes/seller.route');
 
 const app = express();
 app.use(express.json());
@@ -22,6 +23,7 @@ app.use(UserRoute);
 app.use(ProductsRoute);
 app.use(AdminRoute);
 app.use(SalesRoute);
+app.use(SellerRoute);
 app.use(SalesProductsRoute);
 
 module.exports = app;
