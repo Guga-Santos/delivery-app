@@ -35,7 +35,7 @@ export const getAllProducts = async () => {
 
 export const getAllSales = async () => {
   const { data } = await api.get('/sales');
-
+  console.log(data);
   return data;
 };
 
@@ -60,6 +60,11 @@ export const createSaleProducts = async (body, token) => {
   };
   const { data } = await api.post('/salesProducts', body, config);
 
+  return data;
+};
+
+export const getProductById = async (id) => {
+  const { data } = await api.get(`/products/${id}`);
   return data;
 };
 
