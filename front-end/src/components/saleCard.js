@@ -2,11 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../App.css';
 import './saleCard.css';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function SaleCard({ key, id, status, date, totalPrice, address }) {
+  const navigate = useNavigate();
+
   return (
-    <Link to={ `seller/order/${id}` } key={ key } className="sale-card">
+    <button
+      type="button"
+      onClick={ () => navigate(`/seller/orders/${id}`) }
+      key={ key }
+      className="sale-card"
+    >
       <div className="container-order">
         <span>Pedido</span>
         <span data-testid={ `seller_orders__element-order-id-${id}` }>{id}</span>
@@ -33,7 +40,7 @@ export default function SaleCard({ key, id, status, date, totalPrice, address })
           </span>
         </div>
       </div>
-    </Link>
+    </button>
   );
 }
 
