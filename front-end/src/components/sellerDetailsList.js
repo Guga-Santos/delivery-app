@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getSalesById } from '../service/api';
 
 export default function SellerDetailsList() {
@@ -49,20 +49,20 @@ export default function SellerDetailsList() {
           { order.status }
         </li>
         <li>
-          <Link
-            to="/"
+          <button
+            type="button"
             data-testid="seller_order_details__button-preparing-check"
           >
             PREPARAR PEDIDO
-          </Link>
+          </button>
         </li>
         <li>
-          <Link
-            to="/"
+          <button
+            type="button"
             data-testid="seller_order_details__button-dispatch-check"
           >
             SAIU PARA ENTREGA
-          </Link>
+          </button>
         </li>
       </ul>
       <table

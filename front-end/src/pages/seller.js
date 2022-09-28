@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import NavBar from '../components/navBar';
 import SaleCard from '../components/saleCard';
 import { getSalesBySellerId } from '../service/api';
+import SellerHeader from '../components/sellerHeader';
 
 const moment = require('moment');
 
@@ -19,7 +19,7 @@ export default function Seller() {
   console.log(sales);
   return (
     <div>
-      <NavBar />
+      <SellerHeader />
       {
         sales?.map((sale, index) => (
           <SaleCard
