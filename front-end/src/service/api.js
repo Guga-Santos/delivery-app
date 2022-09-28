@@ -79,4 +79,15 @@ export const getOrdersByUserId = async (userId) => {
   return data;
 };
 
+export const getProductsBySaleId = async (saleId) => {
+  const { data } = await api.get(`/salesProducts/${saleId}`);
+  return data;
+};
+
+export const updateSaleStatus = async (body, id) => {
+  const { data } = await api.put(`/sales/${id}`, body);
+
+  return data;
+};
+
 export default api;

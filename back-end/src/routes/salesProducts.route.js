@@ -5,6 +5,7 @@ const Auth = require('../middleware/auth');
 const salesProducts = Router();
 
 salesProducts
+.get('/salesProducts/:saleId', SalesProductsController.getBySaleId)
 .get('/salesProducts', SalesProductsController.getAll)
 .post('/salesProducts', Auth.validateUser, SalesProductsController.create);
 

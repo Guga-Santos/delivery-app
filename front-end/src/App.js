@@ -10,11 +10,13 @@ import Register from './pages/register';
 import Seller from './pages/seller';
 import OrderDetails from './pages/details';
 import Orders from './pages/orders';
+import SellerOrderDetails from './pages/sellerOrderDetails';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/seller/orders/:id" element={ <SellerOrderDetails /> } />
         <Route path="/customer/orders" element={ <Orders /> } />
         <Route path="customer/products" element={ <Products /> } />
         <Route path="customer/checkout" element={ <Checkout /> } />

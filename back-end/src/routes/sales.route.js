@@ -8,6 +8,7 @@ sales
 .get('/sales/:id', SalesController.getOne)
 .get('/sales/userId/:userId', SalesController.findByUserId)
 .get('/sales', SalesController.getAll)
-.post('/sales', Auth.validateUser, SalesController.create);
+.post('/sales', Auth.validateUser, SalesController.create)
+.put('/sales/:id', SalesController.update);
 
 module.exports = sales;

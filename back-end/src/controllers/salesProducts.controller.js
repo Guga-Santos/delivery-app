@@ -22,6 +22,14 @@ const SalesProductsController = {
     
     res.status(200).json(sales);
   },
+
+  getBySaleId: async (req, res) => {
+    const { saleId } = req.params;
+
+    const products = await SalesProductsService.getBySaleId(saleId);
+
+    return res.status(200).json(products);
+  },
 };
 
 module.exports = SalesProductsController;

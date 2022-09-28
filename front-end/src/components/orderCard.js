@@ -48,7 +48,7 @@ export default function OrderCard({ orderId, id, status, saleDate, totalPrice })
 OrderCard.propTypes = {
   orderId: PropTypes.number.isRequired,
   id: PropTypes.number.isRequired,
-  totalPrice: PropTypes.number.isRequired,
+  totalPrice: PropTypes.string.isRequired,
   saleDate: PropTypes.string.isRequired,
   status: PropTypes.string.isRequired,
 };
