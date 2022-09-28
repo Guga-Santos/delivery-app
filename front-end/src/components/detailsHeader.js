@@ -65,7 +65,7 @@ export default function DetailsList() {
       <button
         type="button"
         data-testid="customer_order_details__button-delivery-check"
-        disabled="true"
+        disabled
       >
         MARCAR COMO ENTREGUE
       </button>

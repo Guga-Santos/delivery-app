@@ -27,6 +27,16 @@ const SalesService = {
 
     return sales;
   },
+
+  update: async (id, status) => {
+    const updatedSale = await Model.sales.update({ status }, {
+      where: {
+        id,
+      },
+    });
+
+    return updatedSale;
+  },
 };
 
 module.exports = SalesService;

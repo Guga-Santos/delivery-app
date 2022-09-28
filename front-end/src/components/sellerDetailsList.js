@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getSalesById } from '../service/api';
+import { getSalesById, getProductsBySaleId, updateSaleStatus } from '../service/api';
 
 export default function SellerDetailsList() {
   const [order, setOrder] = useState({});
-  // const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([]);
 
   const params = useParams();
 
@@ -18,8 +18,22 @@ export default function SellerDetailsList() {
       result.saleDate = dateFormat;
       setOrder(result);
     };
+    const getProducts = async () => {
+      const { id } = params;
+      const result = await getProductsBySaleId(id);
+      setProducts(result);
+    };
     getOrder();
-  }, []);
+    getProducts();
+  }, [params]);
+
+  const handleClick = async (status) => {
+    try {
+      await updateSaleStatus({ status }, params.id);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div
@@ -52,6 +66,8 @@ export default function SellerDetailsList() {
           <button
             type="button"
             data-testid="seller_order_details__button-preparing-check"
+            disabled={ order.status !== 'Pendente' }
+            onClick={ () => handleClick('Preparando') }
           >
             PREPARAR PEDIDO
           </button>
@@ -60,6 +76,8 @@ export default function SellerDetailsList() {
           <button
             type="button"
             data-testid="seller_order_details__button-dispatch-check"
+            disabled={ order.status !== 'Preparando' }
+            onClick={ () => handleClick('Em Trânsito') }
           >
             SAIU PARA ENTREGA
           </button>
@@ -79,11 +97,11 @@ export default function SellerDetailsList() {
           </tr>
         </thead>
         <tbody>
-          {/* { finalCart && finalCart.map((product, index) => (
+          { products && products.map((product, index) => (
             <tr key={ product.id }>
               <th
                 data-testid={
-                  `customer_order_details__element-order-table-item-number-${index}`
+                  `seller_order_details__element-order-table-item-number-${index}`
                 }
               >
                 { index + 1 }
@@ -91,7 +109,7 @@ export default function SellerDetailsList() {
               </th>
               <th
                 data-testid={
-                  `customer_order_details__element-order-table-name-${index}`
+                  `seller_order_details__element-order-table-name-${index}`
                 }
               >
                 { product.name }
@@ -99,7 +117,7 @@ export default function SellerDetailsList() {
               </th>
               <th
                 data-testid={
-                  `customer_order_details__element-order-table-quantity-${index}`
+                  `seller_order_details__element-order-table-quantity-${index}`
                 }
               >
                 { product.quantity }
@@ -107,22 +125,28 @@ export default function SellerDetailsList() {
               </th>
               <th
                 data-testid={
-                  `customer_order_details__element-order-table-sub-total-${index}`
+                  `seller_order_details__element-order-table-unit-price-${index}`
                 }
               >
-                { (product.price / product.quantity).toFixed(2).replace(/\./, ',') }
+                {
+                  `R$${
+                    (product.unitPrice / product.quantity).toFixed(2).replace(/\./, ',')
+                  }`
+                }
 
               </th>
               <th
                 data-testid={
-                  `customer_order_details__element-order-total-price-${index}`
+                  `seller_order_details__element-order-table-sub-total-${index}`
                 }
               >
-                { (product.price).toFixed(2).replace(/\./, ',') }
+                {
+                  `R$ ${(product.subTotal).toFixed(2).replace(/\./, ',')}`
+                }
 
               </th>
             </tr>
-          ))} */}
+          ))}
         </tbody>
       </table>
       <h2
