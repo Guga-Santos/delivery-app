@@ -12,11 +12,13 @@ export default function SellerHeader() {
     <div>
       <ul className="navbar">
         <div className="left">
-          <li
-            data-testid="customer_products__element-navbar-link-orders"
-          >
-            PEDIDOS
-          </li>
+          <Link to="/seller/orders">
+            <li
+              data-testid="customer_products__element-navbar-link-orders"
+            >
+              PEDIDOS
+            </li>
+          </Link>
         </div>
         <div className="rigth">
           <li

@@ -8,21 +8,22 @@ export default function SellerDetailsList() {
 
   const params = useParams();
 
+  const getOrder = async () => {
+    const { id } = params;
+    const result = await getSalesById(id);
+    const newDate = new Date(result.saleDate);
+    const maxLength = 10;
+    const dateFormat = newDate.toLocaleString('pt-br').slice(0, maxLength);
+    result.saleDate = dateFormat;
+    setOrder(result);
+  };
+  const getProducts = async () => {
+    const { id } = params;
+    const result = await getProductsBySaleId(id);
+    setProducts(result);
+  };
+
   useEffect(() => {
-    const getOrder = async () => {
-      const { id } = params;
-      const result = await getSalesById(id);
-      const newDate = new Date(result.saleDate);
-      const maxLength = 10;
-      const dateFormat = newDate.toLocaleString('pt-br').slice(0, maxLength);
-      result.saleDate = dateFormat;
-      setOrder(result);
-    };
-    const getProducts = async () => {
-      const { id } = params;
-      const result = await getProductsBySaleId(id);
-      setProducts(result);
-    };
     getOrder();
     getProducts();
   }, [params]);
@@ -30,6 +31,8 @@ export default function SellerDetailsList() {
   const handleClick = async (status) => {
     try {
       await updateSaleStatus({ status }, params.id);
+      getOrder();
+      getProducts();
     } catch (error) {
       console.log(error);
     }

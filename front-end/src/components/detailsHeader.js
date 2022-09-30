@@ -1,26 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getAllSales } from '../service/api';
+import { getAllSales, updateSaleStatus } from '../service/api';
 
 const moment = require('moment');
 
 export default function DetailsList() {
   const [seller, setSeller] = useState();
-  const [sales, setSales] = useState();
+  const [sales, setSales] = useState([]);
   const params = useParams();
+
+  const getSales = async () => {
+    const findResult = await getAllSales();
+    const teste = findResult.find((sale) => sale.id === Number(params.id));
+
+    return setSales(teste);
+  };
 
   useEffect(() => {
     const result = JSON.parse(localStorage.getItem('sellerInfo'));
-    const getSales = async () => {
-      const findResult = await getAllSales();
-      const teste = findResult.find((sale) => sale.id === Number(params.id));
-
-      return setSales(teste);
-    };
     getSales();
     setSeller(result);
   }, [params.id]);
   const newdate = moment(sales?.saleDate).locale('pt-br').format('DD/MM/YYYY');
+
+  const handleClick = async (status) => {
+    try {
+      await updateSaleStatus({ status }, params.id);
+      getSales();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <h2>
@@ -65,7 +76,8 @@ export default function DetailsList() {
       <button
         type="button"
         data-testid="customer_order_details__button-delivery-check"
-        disabled
+        disabled={ sales.status !== 'Em Trânsito' }
+        onClick={ () => handleClick('Entregue') }
       >
         MARCAR COMO ENTREGUE
       </button>
