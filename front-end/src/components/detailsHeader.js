@@ -5,20 +5,20 @@ import DetailsList from './detailsList';
 
 const moment = require('moment');
 
+const testStr = 'customer_order_details__';
+
 export default function DetailsHeader() {
   const [seller, setSeller] = useState();
   const [sales, setSales] = useState([]);
   const params = useParams();
 
-  const getSales = async () => {
-    const findResult = await getAllSales();
-    const teste = findResult.find((sale) => sale.id === Number(params.id));
-
-    return setSales(teste);
-  };
-
   useEffect(() => {
     const result = JSON.parse(localStorage.getItem('sellerInfo'));
+    const getSales = async () => {
+      const findResult = await getAllSales();
+      const teste = findResult.find((sale) => sale.id === Number(params.id));
+      return setSales(teste);
+    };
     getSales();
     setSeller(result);
   }, [params.id]);
@@ -50,7 +50,7 @@ export default function DetailsHeader() {
       <label htmlFor="order-id">
         <h3
           id="order-id"
-          data-testid="customer_order_details__element-order-details-label-order-id"
+          data-testid={ `${testStr}element-order-details-label-order-id` }
           style={ {
             width: '70vw',
             background: '#036b52',
@@ -79,8 +79,7 @@ export default function DetailsHeader() {
           <label htmlFor="seller-name">
             <h4
               id="seller-name"
-              // eslint-disable-next-line max-len
-              data-testid="customer_order_details__element-order-details-label-seller-name"
+              data-testid={ `${testStr}element-order-details-label-seller-name` }
             >
               Pessoa Vendedora
               {seller && `: ${seller.name}`}
@@ -89,7 +88,7 @@ export default function DetailsHeader() {
           <label htmlFor="order-date">
             <h4
               id="order-date"
-              data-testid="customer_order_details__element-order-details-label-order-date"
+              data-testid={ `${testStr}element-order-details-label-order-date` }
             >
               {`Data do pedido: ${newdate}`}
             </h4>
@@ -98,15 +97,14 @@ export default function DetailsHeader() {
         <label htmlFor="delivery-status">
           <h2
             id="delivery-status"
-            data-testid={ 'customer_order_details__element-'
-          + 'order-details-label-delivery-status' }
+            data-testid={ `${testStr}order-details-label-delivery-status` }
           >
             {`Status: ${sales?.status}`}
           </h2>
         </label>
         <button
           type="button"
-          data-testid="customer_order_details__button-delivery-check"
+          data-testid={ `${testStr}button-delivery-check` }
           disabled={ sales.status !== 'Em Trânsito' }
           style={
             {

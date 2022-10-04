@@ -41,7 +41,7 @@ export default function SaleCard({ key, id, status, date, totalPrice, address })
 
       <div
         className="container-order-status"
-        style={ { margin: '.5vh 0 .5vh -1vw' } }
+        style={ { margin: '.5vh 0 0.5vh -1vw' } }
       >
         <span
           style={ { fontSize: '1.5vh', position: 'absolute', left: '12vw' } }
@@ -52,13 +52,13 @@ export default function SaleCard({ key, id, status, date, totalPrice, address })
       </div>
       <span
         data-testid={ `seller_orders__element-order-date-${id}` }
-        style={ { position: 'absolute', left: '25vw', margin: '.5vh 0 .5vh -1vw' } }
+        style={ { position: 'absolute', left: '25vw', margin: '0.5vh 0 .5vh -1vw' } }
       >
         {`Data do pedido: ${date}`}
       </span>
       <span
         data-testid={ `seller_orders__element-card-price-${id}` }
-        style={ { position: 'absolute', left: '40vw', margin: '.5vh 0 .5vh -1vw' } }
+        style={ { position: 'absolute', left: '40vw', margin: '0.5vh 0 0.5vh -1vw' } }
       >
         {`Total: R$ ${totalPrice}`}
       </span>

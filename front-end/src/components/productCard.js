@@ -99,7 +99,7 @@ export default function ProductCard({ id, name, price, urlImage }) {
       <span
         className="product-price"
         data-testid={ `customer_products__element-card-price-${id}` }
-        style={ { margin: '0.5vh 0', fontSize: '2.3vh', fontWeight: '900'} }
+        style={ { margin: '0.5vh 0', fontSize: '2.3vh', fontWeight: '900' } }
       >
         { `R$ ${price.replace(/\./, ',')}` }
       </span>

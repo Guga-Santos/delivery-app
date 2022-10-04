@@ -1,11 +1,11 @@
 .navbar {
   background-color: #036b52;
   display: flex;
+  font-size: 2.5vh;
   height: 60px;
   justify-content: space-between;
   list-style: none;
   padding: 0 3vw;
-  font-size: 2.5vh;
 }
 
 .left {
