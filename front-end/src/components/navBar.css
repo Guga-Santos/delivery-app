@@ -4,14 +4,16 @@
   height: 60px;
   justify-content: space-between;
   list-style: none;
+  padding: 0 3vw;
+  font-size: 2.5vh;
 }
 
 .left {
-  width: 400px;
+  width: 20vw;
 }
 
 .rigth {
-  width: 300px;
+  width: 25vw;
 }
 
 .left, .rigth {

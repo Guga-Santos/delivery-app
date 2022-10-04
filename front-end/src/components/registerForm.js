@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import logo from '../assets/logo.png';
 import { registerRequest } from '../service/api';
 
 export default function RegisterForm() {
@@ -35,54 +36,104 @@ export default function RegisterForm() {
   };
 
   return (
-    <div className="register-container">
-      <label htmlFor="name-input">
-        <input
-          type="text"
-          name="name-input"
-          value={ name }
-          id="name-input"
-          data-testid="common_register__input-name"
-          onChange={ ({ target }) => setName(target.value) }
-        />
-      </label>
-      <label htmlFor="email-input">
-        <input
-          type="email"
-          name="email-input"
-          value={ email }
-          id="email-input"
-          data-testid="common_register__input-email"
-          onChange={ ({ target }) => setEmail(target.value) }
-        />
-      </label>
-      <label htmlFor="password-input">
-        <input
-          type="password"
-          name="password-input"
-          value={ password }
-          id="password-input"
-          data-testid="common_register__input-password"
-          onChange={ ({ target }) => setPassword(target.value) }
-        />
-      </label>
-      <button
-        className="register-buttons"
-        type="button"
-        disabled={ disabled }
-        data-testid="common_register__button-register"
-        onClick={ handleRegisterClick }
+    <div
+      className="register-container"
+      style={
+        {
+          background: '#036b52',
+          width: '100vw',
+          height: '100vh',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center' }
+      }
+    >
+      <div
+        style={
+          {
+            width: '20vw',
+            height: '50vh',
+            background: 'white',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: '1vw' }
+        }
       >
-        CADASTRAR
-      </button>
-      { notFound
-        && (
-          <span
-            data-testid="common_register__element-invalid_register"
-          >
-            Seu nome ou email já existem.
-          </span>
-        )}
+        <img src={ logo } alt="Dona Tereza Logo" />
+        <label htmlFor="name-input">
+          <h5>Nome:</h5>
+          <input
+            type="text"
+            name="name-input"
+            value={ name }
+            id="name-input"
+            style={
+              {
+                width: '16vw',
+                height: '3vh' }
+            }
+            data-testid="common_register__input-name"
+            onChange={ ({ target }) => setName(target.value) }
+          />
+        </label>
+        <label htmlFor="email-input">
+          <h5>Email:</h5>
+          <input
+            type="email"
+            name="email-input"
+            value={ email }
+            id="email-input"
+            style={
+              {
+                width: '16vw',
+                height: '3vh' }
+            }
+            data-testid="common_register__input-email"
+            onChange={ ({ target }) => setEmail(target.value) }
+          />
+        </label>
+        <label htmlFor="password-input">
+          <h5>Password:</h5>
+          <input
+            type="password"
+            name="password-input"
+            value={ password }
+            id="password-input"
+            style={
+              {
+                width: '16vw',
+                height: '3vh' }
+            }
+            data-testid="common_register__input-password"
+            onChange={ ({ target }) => setPassword(target.value) }
+          />
+        </label>
+        <button
+          className="register-buttons"
+          type="button"
+          disabled={ disabled }
+          style={
+            {
+              width: '16.2vw',
+              height: '3.5vh',
+              marginTop: '2vh' }
+          }
+          data-testid="common_register__button-register"
+          onClick={ handleRegisterClick }
+        >
+          CADASTRAR
+        </button>
+        { notFound
+          && (
+            <span
+              data-testid="common_register__element-invalid_register"
+            >
+              Seu nome ou email já existem.
+            </span>
+          )}
+      </div>
     </div>
   );
 }

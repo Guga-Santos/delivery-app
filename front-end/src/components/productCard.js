@@ -75,7 +75,12 @@ export default function ProductCard({ id, name, price, urlImage }) {
       style={ {
         display: 'flex',
         flexDirection: 'column',
-        margin: '2vh 4vw',
+        alignItems: 'center',
+        margin: '2vh 2vw',
+        background: 'white',
+        width: '15vw',
+        padding: '5vh 1vw',
+        borderRadius: '2vw 0',
       } }
     >
       <img
@@ -94,14 +99,20 @@ export default function ProductCard({ id, name, price, urlImage }) {
       <span
         className="product-price"
         data-testid={ `customer_products__element-card-price-${id}` }
+        style={ { margin: '0.5vh 0', fontSize: '2.3vh', fontWeight: '900'} }
       >
-        { price.replace(/\./, ',') }
+        { `R$ ${price.replace(/\./, ',')}` }
       </span>
       <div className="container-product-counter">
         <button
           id={ id }
           type="button"
-          style={ { width: '3vw' } }
+          style={
+            {
+              width: '3vw',
+              height: '3.4vh',
+              cursor: 'pointer' }
+          }
           className="sub"
           data-testid={ `customer_products__button-card-rm-item-${id}` }
           onClick={ handleClick }
@@ -112,7 +123,11 @@ export default function ProductCard({ id, name, price, urlImage }) {
         <input
           type="number"
           min="0"
-          style={ { width: '3vw' } }
+          style={
+            {
+              width: '3vw',
+              height: '3vh' }
+          }
           className="product-quantity"
           data-testid={ `customer_products__input-card-quantity-${id}` }
           value={ quantity }
@@ -121,7 +136,12 @@ export default function ProductCard({ id, name, price, urlImage }) {
         <button
           id={ id }
           type="button"
-          style={ { width: '3vw' } }
+          style={
+            {
+              width: '3vw',
+              height: '3.4vh',
+              cursor: 'pointer' }
+          }
           className="sum"
           data-testid={ `customer_products__button-card-add-item-${id}` }
           onClick={ handleClick }

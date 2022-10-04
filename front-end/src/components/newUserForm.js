@@ -72,6 +72,7 @@ export default function NewUserForm() {
             id="input-name"
             name="input-name"
             data-testid="admin_manage__input-name"
+            style={ { height: '3vh' } }
             value={ newUserName }
             onChange={ ({ target }) => {
               setNewUserName(target.value);
@@ -85,6 +86,7 @@ export default function NewUserForm() {
             type="email"
             id="input-email"
             name="input-email"
+            style={ { height: '3vh' } }
             data-testid="admin_manage__input-email"
             value={ newUserEmail }
             onChange={ ({ target }) => setNewUserEmail(target.value) }
@@ -96,6 +98,7 @@ export default function NewUserForm() {
             type="password"
             id="input-password"
             name="input-password"
+            style={ { height: '3vh' } }
             data-testid="admin_manage__input-password"
             value={ newUserPassword }
             onChange={ ({ target }) => setNewUserPassword(target.value) }
@@ -106,6 +109,7 @@ export default function NewUserForm() {
           <select
             id="select-input"
             data-testid="admin_manage__select-role"
+            style={ { height: '3.4vh' } }
             value={ newUserRole }
             onChange={ ({ target }) => setNewUserRole(target.value) }
           >
@@ -120,6 +124,7 @@ export default function NewUserForm() {
           data-testid="admin_manage__button-register"
           onClick={ handleClick }
           disabled={ disable }
+          style={ { border: 'none', cursor: 'pointer', background: '#04bb90' } }
         >
           Cadastrar
         </button>

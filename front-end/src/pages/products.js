@@ -37,19 +37,33 @@ export default function Products() {
           data-testid="customer_products__button-cart"
           disabled={ cart.length < 1 }
           onClick={ () => navigate('/customer/checkout') }
-          style={ { height: '4vh', width: '6vw' } }
+          style={
+            { height: '5vh',
+              width: '22vw',
+              margin: '1vh auto',
+              background: '#036b52',
+              color: 'white',
+              fontSize: '3vh',
+              border: 'none',
+              borderRadius: '1vh 0',
+              cursor: 'pointer' }
+          }
         >
           <p data-testid="customer_products__checkout-bottom-value">
-            {cart
+            {`Finalizar a compra: R$ ${cart
               .map((obj) => obj.price)
               .reduce((a, b) => a + b, 0)
-              .toFixed(2).replace(/\./, ',')}
+              .toFixed(2).replace(/\./, ',')}`}
           </p>
         </button>
         <div
           style={ {
             display: 'flex',
-            flexWrap: 'wrap' } }
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: '#036b52',
+            paddingTop: '6vh' } }
         >
           {
             products?.map((product, index) => (

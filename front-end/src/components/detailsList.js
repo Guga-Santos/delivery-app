@@ -12,15 +12,14 @@ export default function DetailsList() {
       className="checkout-list-container"
       style={ {
         width: '100vw',
-        margin: '5vh auto',
+        margin: '1vh auto',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center' } }
     >
-      <h3>Finalizar Pedido</h3>
       <table
         className="checkout-table"
-        style={ { width: '90vw' } }
+        style={ { width: '70vw', marginLeft: '-25vw' } }
       >
         <thead>
           <tr>
@@ -80,11 +79,19 @@ export default function DetailsList() {
       </table>
       <h2
         data-testid="customer_order_details__element-order-total-price"
+        style={ {
+          width: '70vw',
+          background: '#036b52',
+          marginTop: '2vh',
+          marginLeft: '-30vw',
+          padding: '1vh 2vw',
+          textAlign: 'right',
+          color: 'white' } }
       >
-        {finalCart && finalCart
+        {finalCart && `TOTAL: R$ ${finalCart
           .map((obj) => obj.price)
           .reduce((a, b) => a + b, 0)
-          .toFixed(2).replace(/\./, ',')}
+          .toFixed(2).replace(/\./, ',')}`}
 
       </h2>
     </div>

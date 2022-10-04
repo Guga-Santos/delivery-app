@@ -50,6 +50,13 @@ export default function UsersList() {
               <button
                 type="button"
                 data-testid={ `admin_manage__element-user-table-remove-${i + 1}` }
+                style={
+                  {
+                    border: 'none',
+                    cursor: 'pointer',
+                    background: '#04bb90',
+                    padding: '.5vh 2vw' }
+                }
               >
                 Excluir
               </button>

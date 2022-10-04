@@ -22,15 +22,16 @@
 
 .nav-container {
   background: #036B52;
-  height: 10vh;
+  height: 7vh;
   width: 100vw;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  font-size: 2.8vh;
+  font-size: 2.4vh;
   overflow-y: hidden;
+  color: white;
 }
 
 /* -----------------------NewForm-------------------------- */
@@ -74,6 +75,48 @@
 }
 
 td, th {
-  width: 20%;
+  height: 3.5vh;
   text-align: left;
+}
+
+/* ---------------------- Links ------------------------- */
+
+a {
+  cursor: 'pointer';
+  text-decoration: none;
+}
+
+a:hover {
+  border-top: none;
+  border-bottom: .3vh solid white;
+  border-left: none;
+  border-right: none;
+
+  animation-name: navborder;
+  animation-duration: .6s;
+}
+
+@keyframes navborder {
+  0% { border-bottom: none;}
+  100% { border-bottom: .3vh solid white;}
+  
+}
+
+
+button:hover {
+  filter: brightness(115%);
+}
+
+
+
+img:hover {
+  animation-name: shake;
+  animation-duration: .5s;
+}
+
+@keyframes shake {
+ 0% { filter: brightness(100%)}
+ 25% { filter: brightness(120%)}
+ 50% { filter: brightness(100%)}
+ 100% { filter: brightness(120%)}
 }

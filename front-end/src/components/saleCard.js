@@ -1,7 +1,6 @@
-import React from 'react';
+/* eslint-disable sonarjs/no-duplicate-string */
 import PropTypes from 'prop-types';
-import '../App.css';
-import './saleCard.css';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function SaleCard({ key, id, status, date, totalPrice, address }) {
@@ -12,34 +11,67 @@ export default function SaleCard({ key, id, status, date, totalPrice, address })
       type="button"
       onClick={ () => navigate(`/seller/orders/${id}`) }
       key={ key }
+      style={
+        {
+          width: '70vw',
+          margin: '2vh 0',
+          display: 'flex',
+          padding: '2vh 2vw',
+          position: 'relative',
+          background: '#04bb90',
+          border: 'none',
+          cursor: 'pointer',
+          borderRadius: '0 0 0 1vh' }
+      }
       className="sale-card"
     >
-      <div className="container-order">
-        <span>Pedido</span>
-        <span data-testid={ `seller_orders__element-order-id-${id}` }>{id}</span>
+      <div
+        className="container-order"
+        style={ { display: 'flex', alignItems: 'center' } }
+      >
+        <h2 style={ { marginRight: '1vw' } }>Pedido: </h2>
+        <h4
+          style={ { fontSize: '2vh' } }
+          data-testid={ `seller_orders__element-order-id-${id}` }
+        >
+          {id}
+
+        </h4>
       </div>
-      <div className="container-order-info">
-        <div className="container-order-top">
-          <div className="container-order-status">
-            <span data-testid={ `seller_orders__element-delivery-status-${id}` }>
-              {status}
-            </span>
-          </div>
-          <div className="container-order-others">
-            <span data-testid={ `seller_orders__element-order-date-${id}` }>
-              {date}
-            </span>
-            <span data-testid={ `seller_orders__element-card-price-${id}` }>
-              {`R$ ${totalPrice}`}
-            </span>
-          </div>
-        </div>
-        <div className="container-order-bottom">
-          <span data-testid={ `seller_orders__element-card-address-${id}` }>
-            {address}
-          </span>
-        </div>
+
+      <div
+        className="container-order-status"
+        style={ { margin: '.5vh 0 .5vh -1vw' } }
+      >
+        <span
+          style={ { fontSize: '1.5vh', position: 'absolute', left: '12vw' } }
+          data-testid={ `seller_orders__element-delivery-status-${id}` }
+        >
+          {`Status: ${status}`}
+        </span>
       </div>
+      <span
+        data-testid={ `seller_orders__element-order-date-${id}` }
+        style={ { position: 'absolute', left: '25vw', margin: '.5vh 0 .5vh -1vw' } }
+      >
+        {`Data do pedido: ${date}`}
+      </span>
+      <span
+        data-testid={ `seller_orders__element-card-price-${id}` }
+        style={ { position: 'absolute', left: '40vw', margin: '.5vh 0 .5vh -1vw' } }
+      >
+        {`Total: R$ ${totalPrice}`}
+      </span>
+
+      <div
+        className="container-order-bottom"
+        style={ { position: 'absolute', left: '50vw', margin: '.5vh 0 .5vh -1vw' } }
+      >
+        <span data-testid={ `seller_orders__element-card-address-${id}` }>
+          {` Endereço de entrega: R${address}`}
+        </span>
+      </div>
+
     </button>
   );
 }

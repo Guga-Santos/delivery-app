@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import NavBar from '../components/navBar';
-import { getOrdersByUserId } from '../service/api';
 import OrderCard from '../components/orderCard';
+import { getOrdersByUserId } from '../service/api';
 
 export default function Orders() {
   const [orders, setOrders] = useState([]);
@@ -18,7 +18,16 @@ export default function Orders() {
   return (
     <div>
       <NavBar />
-      <main>
+      <main
+        style={
+          {
+            width: '100vw',
+            height: '93.8vh',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center' }
+        }
+      >
         {
           orders.map((order, index) => (
             <OrderCard

@@ -27,18 +27,30 @@ export default function CheckoutList() {
         flexDirection: 'column',
         alignItems: 'center' } }
     >
-      <h3>Finalizar Pedido</h3>
+      <h1
+        style={
+          {
+            width: '100%',
+            padding: '1vh 0',
+            textAlign: 'center',
+            background: '#036b52',
+            color: 'white' }
+        }
+      >
+        Detalhes do Pedido:
+
+      </h1>
       <table
         className="checkout-table"
-        style={ { width: '90vw' } }
+        style={ { width: '70vw' } }
       >
         <thead>
           <tr>
-            <th>Item</th>
-            <th>Descrição</th>
-            <th>Quantidade</th>
-            <th>Valor Unitário</th>
-            <th>Sub-total</th>
+            <th style={ { height: '4vh', width: '6vw' } }>Item</th>
+            <th style={ { height: '4vh', width: '30vw' } }>Descrição</th>
+            <th style={ { height: '4vh', width: '10vw' } }>Quantidade</th>
+            <th style={ { height: '4vh', width: '10vw' } }>Valor Unitário</th>
+            <th style={ { height: '4vh', width: '6vw' } }>Sub-total</th>
             <th>Remover Item</th>
           </tr>
         </thead>
@@ -74,7 +86,8 @@ export default function CheckoutList() {
                   `customer_checkout__element-order-table-unit-price-${index}`
                 }
               >
-                { (product.price / product.quantity).toFixed(2).replace(/\./, ',') }
+                { `R$ ${(product.price / product.quantity)
+                  .toFixed(2).replace(/\./, ',')}` }
 
               </th>
               <th
@@ -82,7 +95,7 @@ export default function CheckoutList() {
                   `customer_checkout__element-order-table-sub-total-${index}`
                 }
               >
-                { (product.price).toFixed(2).replace(/\./, ',') }
+                { `R$ ${(product.price).toFixed(2).replace(/\./, ',')}` }
 
               </th>
               <th>
@@ -93,6 +106,16 @@ export default function CheckoutList() {
                   }
                   type="button"
                   onClick={ (e) => handleClick(e) }
+                  style={
+                    {
+                      width: '10vw',
+                      padding: '0.5vh 0',
+                      textAlign: 'center',
+                      background: '#036b52',
+                      border: 'none',
+                      color: 'white',
+                      cursor: 'pointer' }
+                  }
                 >
                   Remover
                 </button>
@@ -104,11 +127,20 @@ export default function CheckoutList() {
       </table>
       <h2
         data-testid="customer_checkout__element-order-total-price"
+        style={
+          {
+            width: '100%',
+            padding: '1vh 0',
+            textAlign: 'center',
+            background: '#036b52',
+            color: 'white',
+            marginTop: '2vh' }
+        }
       >
-        {finalCart && finalCart
+        {finalCart && `TOTAL: R$ ${finalCart
           .map((obj) => obj.price)
           .reduce((a, b) => a + b, 0)
-          .toFixed(2).replace(/\./, ',')}
+          .toFixed(2).replace(/\./, ',')}`}
 
       </h2>
     </div>
